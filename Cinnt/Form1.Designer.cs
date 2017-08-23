@@ -382,6 +382,7 @@
             this.Controls.Add(this.garbleBtn);
             this.Controls.Add(this.covfefeBtn);
             this.Controls.Add(this.mainTb);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "cinnt";
             this.statusStrip1.ResumeLayout(false);
