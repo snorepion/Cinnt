@@ -25,7 +25,7 @@
     <SupportUrl>https://www.github.com/snorepion/Cinnt/issues</SupportUrl>
     <ErrorReportUrl>https://www.github.com/snorepion/Cinnt/issues</ErrorReportUrl>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>0.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

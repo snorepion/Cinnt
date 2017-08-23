@@ -174,7 +174,7 @@ namespace Cinnt
         {
             if (int.TryParse(lttrCntTb.Text, out int i))
             {
-                mainTb.Text = GenerateString(i, false, false, true, mainTb.Text.Split('\n'));
+                mainTb.Text += GenerateString(i, false, false, true, mainTb.Text.Split('\n'));
             }
         }
 
