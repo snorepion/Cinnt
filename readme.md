@@ -25,4 +25,8 @@ Switch letter case between a multitude of options: uppercase, lowercase, sentenc
 
 Switch text between hex, human, and binary (in a convenient way - for example, if you translate TEST to hexadecimal, and then from hexadecimal to binary rather than from text to binary, you can convert from binary to text and get TEST without having to go through hex)
 
-Hideously ugly icon
+Reverse order of text (e.g. example to elpmaxe)
+
+Create an anagram of text (e.g. example to plmxeae)
+
+Automatically indent paragraphs
