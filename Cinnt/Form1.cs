@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cinnt.Properties;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace Cinnt
 {
@@ -23,7 +24,6 @@ namespace Cinnt
         {
             lttrCntTb.Text = "";
         }
-
         private void lttrCntTb_Watermark(object sender, EventArgs e)
         {
             if (lttrCntTb.Text == "")
@@ -90,7 +90,7 @@ namespace Cinnt
                         if (s.Contains(str))
                         {
                             mainTb.Text += Environment.NewLine;
-                            mainTb.Text += definitions[i+1];
+                            mainTb.Text += definitions[i + 1];
                             isDone = true;
                             break;
                         }
@@ -117,7 +117,7 @@ namespace Cinnt
                 {
                     string alphabet = "abcdefghijklmnopqrstuvwxyz";
                     char a;
-                    for(int i = 0; i <= letters; i++)
+                    for (int i = 0; i <= letters; i++)
                     {
                         a = alphabet.ToCharArray()[r.Next(alphabet.Length)];
                         sb.Append(a);
@@ -127,17 +127,14 @@ namespace Cinnt
             }
             return sb.ToString();
         }
-
         private void covfefeBtn_Click(object sender, EventArgs e)
         {
             string empty = GenerateString(2, true, false, false, mainTb.Text.Split('\n'));
         }
-
         private void garbleBtn_Click(object sender, EventArgs e)
         {
             mainTb.Text = GenerateString(2, false, true, false, mainTb.Text.Split('\n'));
         }
-
         private void ungarbleBtn_Click(object sender, EventArgs e)
         {
             string[] definitions = Settings.Default.GarbleSave.Split('\n');
@@ -148,13 +145,12 @@ namespace Cinnt
                 {
                     mainTb.Text += Environment.NewLine;
                     try { mainTb.Text += definitions[i - 1]; }
-                    catch(Exception) { tsMsgReporterLbl.Text = "Error 000: various causes - you probably don't have text in the main text box."; }
+                    catch (Exception) { tsMsgReporterLbl.Text = "Error 000: various causes - you probably don't have text in the main text box."; }
                     break;
                 }
                 i += 1;
             }
         }
-
         private void removeLttrBtn_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
@@ -169,7 +165,6 @@ namespace Cinnt
                 mainTb.Text = sb.ToString();
             }
         }
-
         private void addRandBtn_Click(object sender, EventArgs e)
         {
             if (int.TryParse(lttrCntTb.Text, out int i))
@@ -177,7 +172,6 @@ namespace Cinnt
                 mainTb.Text += GenerateString(i, false, false, true, mainTb.Text.Split('\n'));
             }
         }
-
         private void isoBtn_Click(object sender, EventArgs e)
         {
             string[] isolation = mainTb.Text.Split(separator).Where(s => s.StartsWith(isoTb.Text)).ToArray();
@@ -191,7 +185,6 @@ namespace Cinnt
             }
             mainTb.Text = String.Concat(isolation);
         }
-
         private void sbtrctBtn_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
@@ -213,7 +206,6 @@ namespace Cinnt
                 i++;
             }
         }
-
         private void insBtn_Click(object sender, EventArgs e)
         {
             char[] cc = new char[] { ' ', ',', '/', '|' };
@@ -226,7 +218,7 @@ namespace Cinnt
                 {
                     try
                     {
-                        str = str.Insert(i + insTb2.Text.Length*el, insTb2.Text);
+                        str = str.Insert(i + insTb2.Text.Length * el, insTb2.Text);
                         el++;
                     }
                     catch (IndexOutOfRangeException)
@@ -241,12 +233,10 @@ namespace Cinnt
             }
             mainTb.Text = str;
         }
-
         private void caseCtrlBtn_Click(object sender, EventArgs e)
         {
             mainTb.Text = CaseControl(mainTb.Text, caseCtrlCombox.SelectedIndex);
         }
-
         private string CaseControl(string input, int index)
         {
             if (index == 0)
@@ -309,19 +299,17 @@ namespace Cinnt
             tsMsgReporterLbl.Text = "ERROR 201: Couldn't control case. Have you selected an option from the dropdown box?";
             return null;
         }
-
         private void wrdCntUpdate(object sender, EventArgs e)
         {
             charCntLbl.Text = "Characters: " + mainTb.Text.Length;
-            wrdCntLbl.Text = "Words: " + mainTb.Text.Split(new char[] { ' ', '\r' }).Length.ToString();
+            wrdCntLbl.Text = "Words: " + mainTb.Text.Split(new char[] { ' ', '\r' }).Length;
+            parCntLbl.Text = "Paragraphs: " + mainTb.Text.Split(new char[] { '\r', '\n' }).Length;
         }
-
         private void frmtBtn_Click(object sender, EventArgs e)
         {
-            mainTb.Text=ReformatString(mainTb.Text,new int[]{frmtCombox1.SelectedIndex, frmtCombox2.SelectedIndex}, tsMsgReporterLbl);
+            mainTb.Text = ReformatString(mainTb.Text, new int[] { frmtCombox1.SelectedIndex, frmtCombox2.SelectedIndex }, tsMsgReporterLbl);
         }
-
-        private static string ReformatString(string StringToReformat, int[] FormatIndices, ToolStripStatusLabel tssl)
+        private string ReformatString(string StringToReformat, int[] FormatIndices, ToolStripStatusLabel tssl)
         {
             try
             {
@@ -345,24 +333,12 @@ namespace Cinnt
                 if (FormatIndices[0] == 1 & FormatIndices[1] == 0)
                 {
                     // Binary to hexadecimal
-                    List<byte> lb = new List<byte>();
-                    for (int i = 0; i < StringToReformat.Length; i += 8)
-                    {
-                        string s = StringToReformat.Substring(i, 8);
-                        lb.Add(Convert.ToByte(s, 2));
-                    }
-                    return BitConverter.ToString(Encoding.Default.GetBytes(Encoding.UTF8.GetString(lb.ToArray()))).Replace("-", " ");
+                    return BitConverter.ToString(Encoding.Default.GetBytes(Encoding.UTF8.GetString(GetHexFromBin(StringToReformat).ToArray()))).Replace("-", " ");
                 }
                 if (FormatIndices[0] == 1 & FormatIndices[1] == 2)
                 {
                     // Binary to text
-                    List<byte> lb = new List<byte>();
-                    for (int i = 0; i < StringToReformat.Length; i += 8)
-                    {
-                        string s = StringToReformat.Substring(i, 8);
-                        lb.Add(Convert.ToByte(s, 2));
-                    }
-                    return Encoding.UTF8.GetString(lb.ToArray());
+                    return Encoding.UTF8.GetString(GetHexFromBin(StringToReformat).ToArray());
                 }
                 if (FormatIndices[0] == 2 & FormatIndices[1] == 1)
                 {
@@ -405,7 +381,6 @@ namespace Cinnt
         {
             Settings.Default.GarbleSave += mainTb.Text;
         }
-
         private void fontBtn_Click(object sender, EventArgs e)
         {
             FontDialog fd = new FontDialog()
@@ -420,12 +395,64 @@ namespace Cinnt
             if (fd.ShowDialog() == DialogResult.OK)
             {
                 mainTb.Font = fd.Font;
+                Settings.Default.def_fnt = fd.Font;
             }
         }
-
         private void aboutBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cinnt version 0.2\r\nMade by snorepion\r\nGithub: https://www.github.com/snorepion"+"\r\nSource code available at https://www.github.com/snorepion/cinnt"+"\r\nYou should not have paid for this software (other than by donating to snorepion via Paypal). If you did, request a refund immediately, though you probably won't get one.");
+            MessageBox.Show("Cinnt version 0.2\r\nMade by snorepion\r\nGithub: https://www.github.com/snorepion" + "\r\nSource code available at https://www.github.com/snorepion/cinnt" + "\r\nYou should not have paid for this software (other than by donating to snorepion via Paypal). If you did, request a refund immediately, though you probably won't get one.");
+        }
+        private List<byte> GetHexFromBin(string bin)
+        {
+            List<byte> lb = new List<byte>();
+            for (int i = 0; i < bin.Length; i += 8)
+            {
+                string s = bin.Substring(i, 8);
+                lb.Add(Convert.ToByte(s, 2));
+            }
+            return lb;
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            mainTb.Font = Settings.Default.def_fnt;
+        }
+        private void rvrsBtn_Click(object sender, EventArgs e)
+        {
+            mainTb.Text = String.Concat(mainTb.Text.Reverse());
+        }
+        private void rndmzBtn_Click(object sender, EventArgs e)
+        {
+            var lc = new List<char>(mainTb.Text.ToCharArray());
+            lc.Shuffle();
+            mainTb.Text = String.Concat(lc);
+        }
+        private void autIndBtn_Click(object sender, EventArgs e)
+        {
+            string[] s = mainTb.Text.Split('\r', '\n');
+            int i = 0;
+            foreach (string o in s)
+            {
+                s[i] = " " + s[i];
+                i++;
+            }
+        }
+    }
+    static class Ext { 
+        public static void Shuffle<T>(this IList<T> il)
+        {
+            RNGCryptoServiceProvider r = new RNGCryptoServiceProvider();
+            int i = il.Count;
+            while (i > 1)
+            {
+                byte[] bb = new byte[1];
+                do r.GetBytes(bb);
+                while (!(bb[0] < i * (Byte.MaxValue / i)));
+                int e = (bb[0] % i);
+                i--;
+                T v = il[e];
+                il[e] = il[i];
+                il[i] = v;
+            }
         }
     }
 }

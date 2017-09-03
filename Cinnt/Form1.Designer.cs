@@ -60,6 +60,11 @@
             this.aboutBtn = new System.Windows.Forms.Button();
             this.fontBtn = new System.Windows.Forms.Button();
             this.importBtn = new System.Windows.Forms.Button();
+            this.rvrsBtn = new System.Windows.Forms.Button();
+            this.rndmzBtn = new System.Windows.Forms.Button();
+            this.tsSeprt3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.parCntLbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.autIndBtn = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,7 +188,7 @@
             // 
             // insTb2
             // 
-            this.insTb2.Location = new System.Drawing.Point(175, 346);
+            this.insTb2.Location = new System.Drawing.Point(175, 345);
             this.insTb2.Name = "insTb2";
             this.insTb2.Size = new System.Drawing.Size(75, 20);
             this.insTb2.TabIndex = 12;
@@ -276,8 +281,10 @@
             this.tsSeprt1,
             this.charCntLbl,
             this.tsSeprt2,
-            this.wrdCntLbl});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 372);
+            this.wrdCntLbl,
+            this.tsSeprt3,
+            this.parCntLbl});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 371);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(526, 22);
             this.statusStrip1.TabIndex = 24;
@@ -325,7 +332,7 @@
             // 
             // aboutBtn
             // 
-            this.aboutBtn.Location = new System.Drawing.Point(417, 345);
+            this.aboutBtn.Location = new System.Drawing.Point(418, 345);
             this.aboutBtn.Name = "aboutBtn";
             this.aboutBtn.Size = new System.Drawing.Size(96, 21);
             this.aboutBtn.TabIndex = 28;
@@ -335,7 +342,7 @@
             // 
             // fontBtn
             // 
-            this.fontBtn.Location = new System.Drawing.Point(417, 319);
+            this.fontBtn.Location = new System.Drawing.Point(417, 318);
             this.fontBtn.Name = "fontBtn";
             this.fontBtn.Size = new System.Drawing.Size(96, 21);
             this.fontBtn.TabIndex = 29;
@@ -353,11 +360,59 @@
             this.importBtn.UseVisualStyleBackColor = true;
             this.importBtn.Click += new System.EventHandler(this.importBtn_Click);
             // 
+            // rvrsBtn
+            // 
+            this.rvrsBtn.Location = new System.Drawing.Point(13, 345);
+            this.rvrsBtn.Name = "rvrsBtn";
+            this.rvrsBtn.Size = new System.Drawing.Size(75, 21);
+            this.rvrsBtn.TabIndex = 32;
+            this.rvrsBtn.Text = "Reverse";
+            this.rvrsBtn.UseVisualStyleBackColor = true;
+            this.rvrsBtn.Click += new System.EventHandler(this.rvrsBtn_Click);
+            // 
+            // rndmzBtn
+            // 
+            this.rndmzBtn.Location = new System.Drawing.Point(94, 345);
+            this.rndmzBtn.Name = "rndmzBtn";
+            this.rndmzBtn.Size = new System.Drawing.Size(75, 21);
+            this.rndmzBtn.TabIndex = 33;
+            this.rndmzBtn.Text = "Randomize";
+            this.toolTip1.SetToolTip(this.rndmzBtn, "Randomly reorder letters.");
+            this.rndmzBtn.UseVisualStyleBackColor = true;
+            this.rndmzBtn.Click += new System.EventHandler(this.rndmzBtn_Click);
+            // 
+            // tsSeprt3
+            // 
+            this.tsSeprt3.Name = "tsSeprt3";
+            this.tsSeprt3.Size = new System.Drawing.Size(10, 17);
+            this.tsSeprt3.Text = "|";
+            // 
+            // parCntLbl
+            // 
+            this.parCntLbl.Name = "parCntLbl";
+            this.parCntLbl.Size = new System.Drawing.Size(78, 17);
+            this.parCntLbl.Text = "Paragraphs: 0";
+            // 
+            // autIndBtn
+            // 
+            this.autIndBtn.Location = new System.Drawing.Point(256, 344);
+            this.autIndBtn.Name = "autIndBtn";
+            this.autIndBtn.Size = new System.Drawing.Size(75, 21);
+            this.autIndBtn.TabIndex = 34;
+            this.autIndBtn.Text = "Auto-Indent";
+            this.toolTip1.SetToolTip(this.autIndBtn, "Indent every (detected, not perfect) paragraph by one space. Use again to indent " +
+        "further.");
+            this.autIndBtn.UseVisualStyleBackColor = true;
+            this.autIndBtn.Click += new System.EventHandler(this.autIndBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 394);
+            this.ClientSize = new System.Drawing.Size(526, 393);
+            this.Controls.Add(this.autIndBtn);
+            this.Controls.Add(this.rndmzBtn);
+            this.Controls.Add(this.rvrsBtn);
             this.Controls.Add(this.importBtn);
             this.Controls.Add(this.fontBtn);
             this.Controls.Add(this.aboutBtn);
@@ -384,7 +439,8 @@
             this.Controls.Add(this.mainTb);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "cinnt";
+            this.Text = "Cinnt";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -424,6 +480,11 @@
         private System.Windows.Forms.Button aboutBtn;
         private System.Windows.Forms.Button fontBtn;
         private System.Windows.Forms.Button importBtn;
+        private System.Windows.Forms.Button rvrsBtn;
+        private System.Windows.Forms.Button rndmzBtn;
+        private System.Windows.Forms.ToolStripStatusLabel tsSeprt3;
+        private System.Windows.Forms.ToolStripStatusLabel parCntLbl;
+        private System.Windows.Forms.Button autIndBtn;
     }
 }
 
