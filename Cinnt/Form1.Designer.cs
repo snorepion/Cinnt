@@ -70,6 +70,9 @@
             // 
             // mainTb
             // 
+            this.mainTb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainTb.Location = new System.Drawing.Point(13, 13);
             this.mainTb.MaxLength = 33554432;
             this.mainTb.Multiline = true;
@@ -81,6 +84,7 @@
             // 
             // covfefeBtn
             // 
+            this.covfefeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.covfefeBtn.Location = new System.Drawing.Point(417, 13);
             this.covfefeBtn.Name = "covfefeBtn";
             this.covfefeBtn.Size = new System.Drawing.Size(96, 23);
@@ -92,6 +96,7 @@
             // 
             // garbleBtn
             // 
+            this.garbleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.garbleBtn.Location = new System.Drawing.Point(417, 42);
             this.garbleBtn.Name = "garbleBtn";
             this.garbleBtn.Size = new System.Drawing.Size(96, 55);
@@ -103,6 +108,7 @@
             // 
             // degarbleBtn
             // 
+            this.degarbleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.degarbleBtn.Location = new System.Drawing.Point(417, 177);
             this.degarbleBtn.Name = "degarbleBtn";
             this.degarbleBtn.Size = new System.Drawing.Size(96, 41);
@@ -114,6 +120,7 @@
             // 
             // removeLttrBtn
             // 
+            this.removeLttrBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.removeLttrBtn.Location = new System.Drawing.Point(417, 224);
             this.removeLttrBtn.Name = "removeLttrBtn";
             this.removeLttrBtn.Size = new System.Drawing.Size(96, 23);
@@ -125,6 +132,7 @@
             // 
             // lttrCntTb
             // 
+            this.lttrCntTb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lttrCntTb.Location = new System.Drawing.Point(417, 253);
             this.lttrCntTb.Name = "lttrCntTb";
             this.lttrCntTb.Size = new System.Drawing.Size(96, 20);
@@ -135,6 +143,7 @@
             // 
             // addRandBtn
             // 
+            this.addRandBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addRandBtn.Location = new System.Drawing.Point(417, 279);
             this.addRandBtn.Name = "addRandBtn";
             this.addRandBtn.Size = new System.Drawing.Size(96, 34);
@@ -146,6 +155,7 @@
             // 
             // isoBtn
             // 
+            this.isoBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.isoBtn.Location = new System.Drawing.Point(13, 294);
             this.isoBtn.Name = "isoBtn";
             this.isoBtn.Size = new System.Drawing.Size(75, 21);
@@ -157,6 +167,7 @@
             // 
             // sbtrctBtn
             // 
+            this.sbtrctBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.sbtrctBtn.Location = new System.Drawing.Point(94, 294);
             this.sbtrctBtn.Name = "sbtrctBtn";
             this.sbtrctBtn.Size = new System.Drawing.Size(75, 21);
@@ -168,6 +179,8 @@
             // 
             // insBtn
             // 
+            this.insBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.insBtn.Location = new System.Drawing.Point(175, 294);
             this.insBtn.Name = "insBtn";
             this.insBtn.Size = new System.Drawing.Size(75, 21);
@@ -179,6 +192,8 @@
             // 
             // insTb1
             // 
+            this.insTb1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.insTb1.Location = new System.Drawing.Point(175, 320);
             this.insTb1.Name = "insTb1";
             this.insTb1.Size = new System.Drawing.Size(75, 20);
@@ -188,6 +203,8 @@
             // 
             // insTb2
             // 
+            this.insTb2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.insTb2.Location = new System.Drawing.Point(175, 345);
             this.insTb2.Name = "insTb2";
             this.insTb2.Size = new System.Drawing.Size(75, 20);
@@ -196,6 +213,7 @@
             // 
             // isoTb
             // 
+            this.isoTb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.isoTb.Location = new System.Drawing.Point(13, 320);
             this.isoTb.Name = "isoTb";
             this.isoTb.Size = new System.Drawing.Size(75, 20);
@@ -204,6 +222,7 @@
             // 
             // sbtrctTb
             // 
+            this.sbtrctTb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.sbtrctTb.Location = new System.Drawing.Point(94, 320);
             this.sbtrctTb.Name = "sbtrctTb";
             this.sbtrctTb.Size = new System.Drawing.Size(75, 20);
@@ -212,6 +231,7 @@
             // 
             // garbleDictBtn
             // 
+            this.garbleDictBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.garbleDictBtn.Location = new System.Drawing.Point(418, 103);
             this.garbleDictBtn.Name = "garbleDictBtn";
             this.garbleDictBtn.Size = new System.Drawing.Size(96, 41);
@@ -222,6 +242,7 @@
             // 
             // frmtCombox1
             // 
+            this.frmtCombox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.frmtCombox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.frmtCombox1.FormattingEnabled = true;
             this.frmtCombox1.Items.AddRange(new object[] {
@@ -236,6 +257,7 @@
             // 
             // frmtCombox2
             // 
+            this.frmtCombox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.frmtCombox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.frmtCombox2.FormattingEnabled = true;
             this.frmtCombox2.Items.AddRange(new object[] {
@@ -250,6 +272,7 @@
             // 
             // caseCtrlBtn
             // 
+            this.caseCtrlBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.caseCtrlBtn.Location = new System.Drawing.Point(256, 294);
             this.caseCtrlBtn.Name = "caseCtrlBtn";
             this.caseCtrlBtn.Size = new System.Drawing.Size(75, 21);
@@ -260,6 +283,7 @@
             // 
             // caseCtrlCombox
             // 
+            this.caseCtrlCombox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.caseCtrlCombox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.caseCtrlCombox.FormattingEnabled = true;
             this.caseCtrlCombox.Items.AddRange(new object[] {
@@ -322,6 +346,7 @@
             // 
             // frmtBtn
             // 
+            this.frmtBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.frmtBtn.Location = new System.Drawing.Point(336, 294);
             this.frmtBtn.Name = "frmtBtn";
             this.frmtBtn.Size = new System.Drawing.Size(75, 21);
@@ -332,6 +357,8 @@
             // 
             // aboutBtn
             // 
+            this.aboutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.aboutBtn.Location = new System.Drawing.Point(418, 345);
             this.aboutBtn.Name = "aboutBtn";
             this.aboutBtn.Size = new System.Drawing.Size(96, 21);
@@ -342,6 +369,7 @@
             // 
             // fontBtn
             // 
+            this.fontBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fontBtn.Location = new System.Drawing.Point(417, 318);
             this.fontBtn.Name = "fontBtn";
             this.fontBtn.Size = new System.Drawing.Size(96, 21);
@@ -352,6 +380,7 @@
             // 
             // importBtn
             // 
+            this.importBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.importBtn.Location = new System.Drawing.Point(417, 150);
             this.importBtn.Name = "importBtn";
             this.importBtn.Size = new System.Drawing.Size(96, 21);
@@ -362,6 +391,7 @@
             // 
             // rvrsBtn
             // 
+            this.rvrsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rvrsBtn.Location = new System.Drawing.Point(13, 345);
             this.rvrsBtn.Name = "rvrsBtn";
             this.rvrsBtn.Size = new System.Drawing.Size(75, 21);
@@ -372,6 +402,7 @@
             // 
             // rndmzBtn
             // 
+            this.rndmzBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rndmzBtn.Location = new System.Drawing.Point(94, 345);
             this.rndmzBtn.Name = "rndmzBtn";
             this.rndmzBtn.Size = new System.Drawing.Size(75, 21);
@@ -395,6 +426,7 @@
             // 
             // autIndBtn
             // 
+            this.autIndBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.autIndBtn.Location = new System.Drawing.Point(256, 344);
             this.autIndBtn.Name = "autIndBtn";
             this.autIndBtn.Size = new System.Drawing.Size(75, 21);

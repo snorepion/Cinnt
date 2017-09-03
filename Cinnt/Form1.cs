@@ -302,8 +302,8 @@ namespace Cinnt
         private void wrdCntUpdate(object sender, EventArgs e)
         {
             charCntLbl.Text = "Characters: " + mainTb.Text.Length;
-            wrdCntLbl.Text = "Words: " + mainTb.Text.Split(new char[] { ' ', '\r' }).Length;
-            parCntLbl.Text = "Paragraphs: " + mainTb.Text.Split(new char[] { '\r', '\n' }).Length;
+            wrdCntLbl.Text = "Words: " + mainTb.Text.Split(new char[] { ' ', '\r' }).TakeWhile(x=>!x.Equals("")).ToArray().Length;
+            parCntLbl.Text = "Paragraphs: " + mainTb.Text.Split('\r').Length;
         }
         private void frmtBtn_Click(object sender, EventArgs e)
         {
@@ -400,7 +400,7 @@ namespace Cinnt
         }
         private void aboutBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cinnt version 0.2\r\nMade by snorepion\r\nGithub: https://www.github.com/snorepion" + "\r\nSource code available at https://www.github.com/snorepion/cinnt" + "\r\nYou should not have paid for this software (other than by donating to snorepion via Paypal). If you did, request a refund immediately, though you probably won't get one.");
+            MessageBox.Show("Cinnt version 0.3.1\r\nMade by snorepion\r\nGithub: https://www.github.com/snorepion" + "\r\nSource code available at https://www.github.com/snorepion/cinnt" + "\r\nYou should not have paid for this software (other than by donating to snorepion via Paypal). If you did, request a refund immediately, though you probably won't get one.");
         }
         private List<byte> GetHexFromBin(string bin)
         {
@@ -428,13 +428,14 @@ namespace Cinnt
         }
         private void autIndBtn_Click(object sender, EventArgs e)
         {
-            string[] s = mainTb.Text.Split('\r', '\n');
+            string[] s = mainTb.Text.Split('\n');
             int i = 0;
             foreach (string o in s)
             {
                 s[i] = " " + s[i];
                 i++;
             }
+            mainTb.Text = String.Join("\n",s);
         }
     }
     static class Ext { 
