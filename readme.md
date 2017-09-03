@@ -1,4 +1,4 @@
-== Cinnt ==
+==Cinnt==
 
 An array of string manipulation tools, ranging from fun (covfefeize) to useful (string to binary). It's pretty simple -- and small, so you can download it if you're having trouble figuring
 out what it does. If you're having trouble figuring out how it *works*, it's probably because I hate commenting and therefore did zero to `null` to make it easy to understand. It's not
@@ -24,3 +24,5 @@ Insert text [into a specific character position in your input]
 Switch letter case between a multitude of options: uppercase, lowercase, sentence, reverse sentence (lIKE THIS), alternating between characters, and alternating between words (this one may not be completely precise)
 
 Switch text between hex, human, and binary (in a convenient way - for example, if you translate TEST to hexadecimal, and then from hexadecimal to binary rather than from text to binary, you can convert from binary to text and get TEST without having to go through hex)
+
+Hideously ugly icon
