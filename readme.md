@@ -1,4 +1,4 @@
-==Cinnt==
+#Cinnt
 
 An array of string manipulation tools, ranging from fun (covfefeize) to useful (string to binary). It's pretty simple -- and small, so you can download it if you're having trouble figuring
 out what it does. If you're having trouble figuring out how it *works*, it's probably because I hate commenting and therefore did zero to `null` to make it easy to understand. It's not
