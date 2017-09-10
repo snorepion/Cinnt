@@ -1,6 +1,7 @@
-#CHANGELOG
+Changelog
+=
 
-##0.4.0 
+## 0.4.0
 
 Fixed extremely inefficient subtraction process
 
@@ -22,7 +23,7 @@ New functions:
 
 - Experimental revert: undo last function performed (different from basic undo)
 
-##0.3.1
+## 0.3.1
 
 More accurate word and paragraph count
 
@@ -30,7 +31,7 @@ Controls now scale to fit form
 
 Auto-indent bug fixed
 
-##0.3.0
+## 0.3.0
 
 New icon
 
@@ -42,7 +43,7 @@ New functions:
 
 - Reverse order
 
-##0.2.1
+## 0.2.1
 
 Fixed Add Random Letters bug
 
