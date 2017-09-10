@@ -40,3 +40,5 @@ Shuffle items in list
 Find using regex and plain text
 
 Customizable UI
+
+[Here are some screenshots.](https://imgur.com/a/IQRG1)
