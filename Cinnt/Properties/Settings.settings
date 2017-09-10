@@ -7,7 +7,34 @@
 null</Value>
     </Setting>
     <Setting Name="def_fnt" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Segoe UI, 9pt</Value>
+    </Setting>
+    <Setting Name="tbBC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="tbFC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="btnBC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="btnFC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="btnMoBC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Gainsboro</Value>
+    </Setting>
+    <Setting Name="btnMdBC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Silver</Value>
+    </Setting>
+    <Setting Name="uiFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Segoe UI, 9pt</Value>
+    </Setting>
+    <Setting Name="uiBC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
+    <Setting Name="matchC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">ForestGreen</Value>
     </Setting>
   </Settings>
 </SettingsFile>

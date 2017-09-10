@@ -13,9 +13,10 @@ using System.Security.Cryptography;
 
 namespace Cinnt
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        string OriginalContent = "";
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -28,7 +29,7 @@ namespace Cinnt
         {
             if (lttrCntTb.Text == "")
             {
-                lttrCntTb.Text = "How many letters?";
+                lttrCntTb.Text = "How many?";
             }
         }
         private string GenerateString(int letters, bool covfefe, bool garble, bool genlet, string[] array)
@@ -129,14 +130,17 @@ namespace Cinnt
         }
         private void covfefeBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             string empty = GenerateString(2, true, false, false, mainTb.Text.Split('\n'));
         }
         private void garbleBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             mainTb.Text = GenerateString(2, false, true, false, mainTb.Text.Split('\n'));
         }
         private void ungarbleBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             string[] definitions = Settings.Default.GarbleSave.Split('\n');
             int i = 0;
             foreach (string s in definitions)
@@ -148,11 +152,12 @@ namespace Cinnt
                     catch (Exception) { tsMsgReporterLbl.Text = "Error 000: various causes - you probably don't have text in the main text box."; }
                     break;
                 }
-                i += 1;
+                i++;
             }
         }
         private void removeLttrBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             StringBuilder sb = new StringBuilder();
             if (int.TryParse(lttrCntTb.Text, out int i))
             {
@@ -167,13 +172,22 @@ namespace Cinnt
         }
         private void addRandBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             if (int.TryParse(lttrCntTb.Text, out int i))
             {
-                mainTb.Text += GenerateString(i, false, false, true, mainTb.Text.Split('\n'));
+                if (i < 100000000)
+                {
+                    mainTb.Text += GenerateString(i, false, false, true, mainTb.Text.Split('\n'));
+                }
+                else
+                {
+                    tsMsgReporterLbl.Text = "Generating this many letters is prevented in Cinnt in order to protect your data. If you do want to generate this many, please do so in chunks to allow your memory to be preserved.";
+                }
             }
         }
         private void isoBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             string[] isolation = mainTb.Text.Split(separator).Where(s => s.StartsWith(isoTb.Text)).ToArray();
             if (isolation.Length == 0)
             {
@@ -187,27 +201,12 @@ namespace Cinnt
         }
         private void sbtrctBtn_Click(object sender, EventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
-            int i = 0;
-            int foo = 0;
-            string[] subtract = mainTb.Text.Split(separator).Where(s => s.StartsWith(sbtrctTb.Text)).ToArray();
-            foreach (string s in subtract)
-            {
-                if (i == 0)
-                {
-                    sb.Append(mainTb.Text.Substring(0, mainTb.Text.IndexOf(s)));
-                    foo = mainTb.Text.IndexOf(s) + s.Length;
-                }
-                if (i > 0)
-                {
-                    tsMsgReporterLbl.Text = "Note: more than one string being removed.";
-                    sb.Append(mainTb.Text.Substring(foo, mainTb.Text.IndexOf(s) + foo));
-                }
-                i++;
-            }
+            OriginalContent = mainTb.Text;
+            mainTb.Text = mainTb.Text.Replace(sbtrctTb.Text, "");
         }
         private void insBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             char[] cc = new char[] { ' ', ',', '/', '|' };
             string[] poss = insTb1.Text.Split();
             string str = mainTb.Text;
@@ -235,6 +234,7 @@ namespace Cinnt
         }
         private void caseCtrlBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             mainTb.Text = CaseControl(mainTb.Text, caseCtrlCombox.SelectedIndex);
         }
         private string CaseControl(string input, int index)
@@ -301,12 +301,13 @@ namespace Cinnt
         }
         private void wrdCntUpdate(object sender, EventArgs e)
         {
-            charCntLbl.Text = "Characters: " + mainTb.Text.Length;
-            wrdCntLbl.Text = "Words: " + mainTb.Text.Split(new char[] { ' ', '\r' }).TakeWhile(x=>!x.Equals("")).ToArray().Length;
+            charCntLbl.Text = "Characters: " + mainTb.Text.Replace("\r", "").Length;
+            wrdCntLbl.Text = "Words: " + mainTb.Text.Split(new char[] { ' ', '\r' }).TakeWhile(x => !x.Equals("")).ToArray().Length;
             parCntLbl.Text = "Paragraphs: " + mainTb.Text.Split('\r').Length;
         }
         private void frmtBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             mainTb.Text = ReformatString(mainTb.Text, new int[] { frmtCombox1.SelectedIndex, frmtCombox2.SelectedIndex }, tsMsgReporterLbl);
         }
         private string ReformatString(string StringToReformat, int[] FormatIndices, ToolStripStatusLabel tssl)
@@ -400,7 +401,7 @@ namespace Cinnt
         }
         private void aboutBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cinnt version 0.3.1\r\nMade by snorepion\r\nGithub: https://www.github.com/snorepion" + "\r\nSource code available at https://www.github.com/snorepion/cinnt" + "\r\nYou should not have paid for this software (other than by donating to snorepion via Paypal). If you did, request a refund immediately, though you probably won't get one.");
+            MessageBox.Show("Cinnt version 0.4.0.0S\r\nMade by snorepion\r\nGithub: https://www.github.com/snorepion" + "\r\nSource code available at https://www.github.com/snorepion/cinnt" + "\r\nYou should not have paid for this software (other than by donating to snorepion via Paypal). If you did, request a refund IMMEDIATELY.");
         }
         private List<byte> GetHexFromBin(string bin)
         {
@@ -414,20 +415,36 @@ namespace Cinnt
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            Button[] allBtns = new Button[] {
+                covfefeBtn,garbleBtn,degarbleBtn,garbleDictBtn,importBtn,removeLttrBtn,addRandBtn,isoBtn,sbtrctBtn,insBtn,caseCtrlBtn,frmtBtn,fontBtn,settingsBtn,reverseBtn,rndmzBtn,autIndBtn,aboutBtn,sortBtn,shuffleBtn,rvrsBtn,findBtn,revBtn
+            };
+            object[] tbs = new object[] {
+                lttrCntTb,isoTb,sbtrctTb,insTb1,insTb2,findTb,tbExtender1,tbContainer2,tbExtender3,tbExtender4
+            };
+            mainTb.BackColor = Settings.Default.tbBC; mainTb.ForeColor = Settings.Default.tbFC;
+            foreach (TextBox t in tbs.Take(6)) { t.BackColor = Settings.Default.tbBC; t.ForeColor = Settings.Default.tbFC; t.Font = Settings.Default.def_fnt; }
+            foreach (Panel p in tbs.Skip(6)) { p.BackColor = Settings.Default.tbBC; }
+            foreach (Button b in allBtns) { b.BackColor = Settings.Default.btnBC; b.ForeColor = Settings.Default.btnFC; b.FlatAppearance.MouseDownBackColor = Settings.Default.btnMdBC; b.FlatAppearance.MouseOverBackColor = Settings.Default.btnMoBC;b.Font = Settings.Default.uiFont; }
+            Font = Settings.Default.uiFont;
+            BackColor = Settings.Default.uiBC;
             mainTb.Font = Settings.Default.def_fnt;
+            statusStrip1.Renderer = new ToolStripProfessionalRenderer(new Override());
         }
         private void rvrsBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             mainTb.Text = String.Concat(mainTb.Text.Reverse());
         }
         private void rndmzBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             var lc = new List<char>(mainTb.Text.ToCharArray());
             lc.Shuffle();
             mainTb.Text = String.Concat(lc);
         }
         private void autIndBtn_Click(object sender, EventArgs e)
         {
+            OriginalContent = mainTb.Text;
             string[] s = mainTb.Text.Split('\n');
             int i = 0;
             foreach (string o in s)
@@ -435,13 +452,68 @@ namespace Cinnt
                 s[i] = " " + s[i];
                 i++;
             }
-            mainTb.Text = String.Join("\n",s);
+            mainTb.Text = String.Join("\n", s);
+        }
+        private void sortBtn_Click(object sender, EventArgs e)
+        {
+            OriginalContent = mainTb.Text;
+            char c = '\n';
+            if (separChrTb.Text != "") c = separChrTb.Text[0];
+            string[] items = mainTb.Text.Split(c);
+            List<string> ls = items.ToList();
+            ls.Sort();
+            mainTb.Text = String.Join("\r\n", ls);
+            items = null;
+        }
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+            Form f = new Options();
+            f.Show();
+        }
+        private void shuffleBtn_Click(object sender, EventArgs e)
+        {
+            OriginalContent = mainTb.Text;
+            List<string> list = mainTb.Text.Split(separChrTb.Text[0]).ToList();
+            list.Shuffle();
+            mainTb.Text = String.Join(separChrTb.Text[0].ToString(), list);
+        }
+        private void reverseBtn_Click(object sender, EventArgs e)
+        {
+            OriginalContent = mainTb.Text;
+            List<string> list = mainTb.Text.Split(separChrTb.Text[0]).ToList();
+            list.Reverse();
+            mainTb.Text = String.Join(separChrTb.Text[0].ToString(), list);
+        }
+        private void findBtn_Click(object sender, EventArgs e)
+        {
+            Regex r = new Regex(findTb.Text);
+            MatchCollection mc = r.Matches(mainTb.Text);
+            int origPos = mainTb.SelectionStart;
+            int origLgt = mainTb.SelectionLength;
+            foreach (Match m in mc)
+            {
+                mainTb.Select(m.Index, m.Length);
+                mainTb.SelectionColor = Settings.Default.matchC;
+            }
+            mainTb.SelectionStart = origPos;
+            mainTb.SelectionLength = origLgt;
+            mainTb.SelectionColor = Settings.Default.tbFC;
+        }
+        private void garbleDictBtn_Click(object sender, EventArgs e)
+        {
+            OriginalContent = mainTb.Text;
+            mainTb.Text = Settings.Default.GarbleSave;
+        }
+        private void revBtn_Click(object sender, EventArgs e)
+        {
+            mainTb.Text = OriginalContent;
         }
     }
-    static class Ext { 
+    static class Ext
+    {
+        static RNGCryptoServiceProvider r = new RNGCryptoServiceProvider();
         public static void Shuffle<T>(this IList<T> il)
         {
-            RNGCryptoServiceProvider r = new RNGCryptoServiceProvider();
             int i = il.Count;
             while (i > 1)
             {
@@ -456,4 +528,9 @@ namespace Cinnt
             }
         }
     }
+}
+public class Override : ProfessionalColorTable
+{
+    public override Color StatusStripGradientBegin { get { return Color.White; } }
+    public override Color StatusStripGradientEnd { get { return Color.White; } }
 }
