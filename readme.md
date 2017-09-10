@@ -30,3 +30,13 @@ Reverse order of text (e.g. example to elpmaxe)
 Create an anagram of text (e.g. example to plmxeae)
 
 Automatically indent paragraphs
+
+Sort list alphabetically and numerically
+
+Reverse order of list
+
+Shuffle items in list
+
+Find using regex and plain text
+
+Customizable UI
