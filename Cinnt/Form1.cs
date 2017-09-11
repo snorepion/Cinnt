@@ -459,11 +459,9 @@ namespace Cinnt
             OriginalContent = mainTb.Text;
             char c = '\n';
             if (separChrTb.Text != "") c = separChrTb.Text[0];
-            string[] items = mainTb.Text.Split(c);
-            List<string> ls = items.ToList();
+            List<string> ls = mainTb.Text.Split(c).ToList();
             ls.Sort();
             mainTb.Text = String.Join("\r\n", ls);
-            items = null;
         }
         private void settingsBtn_Click(object sender, EventArgs e)
         {
@@ -473,14 +471,18 @@ namespace Cinnt
         private void shuffleBtn_Click(object sender, EventArgs e)
         {
             OriginalContent = mainTb.Text;
-            List<string> list = mainTb.Text.Split(separChrTb.Text[0]).ToList();
+            char c = '\n';
+            if (separChrTb.Text != "") c = separChrTb.Text[0];
+            List<string> list = mainTb.Text.Split(c).ToList();
             list.Shuffle();
             mainTb.Text = String.Join(separChrTb.Text[0].ToString(), list);
         }
         private void reverseBtn_Click(object sender, EventArgs e)
         {
             OriginalContent = mainTb.Text;
-            List<string> list = mainTb.Text.Split(separChrTb.Text[0]).ToList();
+            char c = '\n';
+            if (separChrTb.Text != "") c = separChrTb.Text[0];
+            List<string> list = mainTb.Text.Split(c).ToList();
             list.Reverse();
             mainTb.Text = String.Join(separChrTb.Text[0].ToString(), list);
         }
