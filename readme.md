@@ -42,3 +42,7 @@ Find using regex and plain text
 Customizable UI
 
 [Here are some screenshots.](https://imgur.com/a/IQRG1)
+
+![# cosgais](https://i.imgur.com/IzR9Lze.png)
+
+Coming soon!
