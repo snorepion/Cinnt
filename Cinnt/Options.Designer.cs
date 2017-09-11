@@ -90,7 +90,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Version: Cinnt v0.4.0.0S";
+            this.label1.Text = "Version: Cinnt v0.4.0.2S";
             // 
             // linkLabel1
             // 
@@ -134,7 +134,8 @@
             "Active button background",
             "Button text color",
             "Window background",
-            "Find and replace match color"});
+            "Find and replace match color",
+            "Status strip background"});
             this.colorSelectLb.Location = new System.Drawing.Point(4, 7);
             this.colorSelectLb.Name = "colorSelectLb";
             this.colorSelectLb.Size = new System.Drawing.Size(381, 214);

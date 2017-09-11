@@ -51,6 +51,9 @@
             this.rndmzBtn = new System.Windows.Forms.Button();
             this.autIndBtn = new System.Windows.Forms.Button();
             this.separChrTb = new System.Windows.Forms.TextBox();
+            this.shuffleBtn = new System.Windows.Forms.Button();
+            this.reverseBtn = new System.Windows.Forms.Button();
+            this.findBtn = new System.Windows.Forms.Button();
             this.caseCtrlBtn = new System.Windows.Forms.Button();
             this.caseCtrlCombox = new System.Windows.Forms.ComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -71,14 +74,11 @@
             this.tbContainer2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.shuffleBtn = new System.Windows.Forms.Button();
             this.tbExtender3 = new System.Windows.Forms.Panel();
             this.findTb = new System.Windows.Forms.TextBox();
             this.tbExtender4 = new System.Windows.Forms.Panel();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.revBtn = new System.Windows.Forms.Button();
-            this.reverseBtn = new System.Windows.Forms.Button();
-            this.findBtn = new System.Windows.Forms.Button();
             this.tbExtender5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -434,6 +434,66 @@
             this.separChrTb.TabIndex = 36;
             this.toolTip1.SetToolTip(this.separChrTb, "Separator character. Leave blank to sort by line.");
             // 
+            // shuffleBtn
+            // 
+            this.shuffleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.shuffleBtn.BackColor = System.Drawing.Color.White;
+            this.shuffleBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.shuffleBtn.FlatAppearance.BorderSize = 0;
+            this.shuffleBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
+            this.shuffleBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.shuffleBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.shuffleBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.shuffleBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shuffleBtn.Location = new System.Drawing.Point(112, 417);
+            this.shuffleBtn.Name = "shuffleBtn";
+            this.shuffleBtn.Size = new System.Drawing.Size(64, 21);
+            this.shuffleBtn.TabIndex = 39;
+            this.shuffleBtn.Text = "Shuffle";
+            this.toolTip1.SetToolTip(this.shuffleBtn, "Shuffle the order of a list based on a chosen character.");
+            this.shuffleBtn.UseVisualStyleBackColor = false;
+            this.shuffleBtn.Click += new System.EventHandler(this.shuffleBtn_Click);
+            // 
+            // reverseBtn
+            // 
+            this.reverseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.reverseBtn.BackColor = System.Drawing.Color.White;
+            this.reverseBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.reverseBtn.FlatAppearance.BorderSize = 0;
+            this.reverseBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
+            this.reverseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.reverseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.reverseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reverseBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reverseBtn.Location = new System.Drawing.Point(182, 417);
+            this.reverseBtn.Name = "reverseBtn";
+            this.reverseBtn.Size = new System.Drawing.Size(68, 21);
+            this.reverseBtn.TabIndex = 42;
+            this.reverseBtn.Text = "Swap";
+            this.toolTip1.SetToolTip(this.reverseBtn, "Reverse the order of a list based on the chosen character.");
+            this.reverseBtn.UseVisualStyleBackColor = false;
+            this.reverseBtn.Click += new System.EventHandler(this.reverseBtn_Click);
+            // 
+            // findBtn
+            // 
+            this.findBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.findBtn.BackColor = System.Drawing.Color.White;
+            this.findBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.findBtn.FlatAppearance.BorderSize = 0;
+            this.findBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
+            this.findBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.findBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.findBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.findBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findBtn.Location = new System.Drawing.Point(256, 417);
+            this.findBtn.Name = "findBtn";
+            this.findBtn.Size = new System.Drawing.Size(56, 21);
+            this.findBtn.TabIndex = 43;
+            this.findBtn.Text = "Find";
+            this.toolTip1.SetToolTip(this.findBtn, "Highlight specific text. You may enter a regex or plain text to find.");
+            this.findBtn.UseVisualStyleBackColor = false;
+            this.findBtn.Click += new System.EventHandler(this.findBtn_Click);
+            // 
             // caseCtrlBtn
             // 
             this.caseCtrlBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -695,26 +755,6 @@
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // shuffleBtn
-            // 
-            this.shuffleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.shuffleBtn.BackColor = System.Drawing.Color.White;
-            this.shuffleBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.shuffleBtn.FlatAppearance.BorderSize = 0;
-            this.shuffleBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
-            this.shuffleBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.shuffleBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.shuffleBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.shuffleBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shuffleBtn.Location = new System.Drawing.Point(112, 417);
-            this.shuffleBtn.Name = "shuffleBtn";
-            this.shuffleBtn.Size = new System.Drawing.Size(64, 21);
-            this.shuffleBtn.TabIndex = 39;
-            this.shuffleBtn.Text = "Shuffle";
-            this.toolTip1.SetToolTip(this.shuffleBtn, "Shuffle the order of a list based on a chosen character.");
-            this.shuffleBtn.UseVisualStyleBackColor = false;
-            this.shuffleBtn.Click += new System.EventHandler(this.shuffleBtn_Click);
-            // 
             // tbExtender3
             // 
             this.tbExtender3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -787,46 +827,6 @@
             this.revBtn.UseVisualStyleBackColor = false;
             this.revBtn.Click += new System.EventHandler(this.revBtn_Click);
             // 
-            // reverseBtn
-            // 
-            this.reverseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.reverseBtn.BackColor = System.Drawing.Color.White;
-            this.reverseBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.reverseBtn.FlatAppearance.BorderSize = 0;
-            this.reverseBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
-            this.reverseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.reverseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.reverseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reverseBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reverseBtn.Location = new System.Drawing.Point(182, 417);
-            this.reverseBtn.Name = "reverseBtn";
-            this.reverseBtn.Size = new System.Drawing.Size(68, 21);
-            this.reverseBtn.TabIndex = 42;
-            this.reverseBtn.Text = "Swap";
-            this.toolTip1.SetToolTip(this.reverseBtn, "Reverse the order of a list based on the chosen character.");
-            this.reverseBtn.UseVisualStyleBackColor = false;
-            this.reverseBtn.Click += new System.EventHandler(this.reverseBtn_Click);
-            // 
-            // findBtn
-            // 
-            this.findBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.findBtn.BackColor = System.Drawing.Color.White;
-            this.findBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.findBtn.FlatAppearance.BorderSize = 0;
-            this.findBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGray;
-            this.findBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.findBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.findBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.findBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.findBtn.Location = new System.Drawing.Point(256, 417);
-            this.findBtn.Name = "findBtn";
-            this.findBtn.Size = new System.Drawing.Size(56, 21);
-            this.findBtn.TabIndex = 43;
-            this.findBtn.Text = "Find";
-            this.toolTip1.SetToolTip(this.findBtn, "Highlight specific text. You may enter a regex or plain text to find.");
-            this.findBtn.UseVisualStyleBackColor = false;
-            this.findBtn.Click += new System.EventHandler(this.findBtn_Click);
-            // 
             // tbExtender5
             // 
             this.tbExtender5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -839,7 +839,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.insTb1);
             this.panel1.Location = new System.Drawing.Point(174, 361);
@@ -849,7 +850,8 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.insTb2);
             this.panel2.Location = new System.Drawing.Point(175, 388);

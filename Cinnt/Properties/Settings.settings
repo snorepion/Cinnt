@@ -36,5 +36,8 @@ null</Value>
     <Setting Name="matchC" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">ForestGreen</Value>
     </Setting>
+    <Setting Name="statBC" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

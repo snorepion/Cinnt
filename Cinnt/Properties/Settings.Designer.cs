@@ -154,5 +154,17 @@ namespace Cinnt.Properties {
                 this["matchC"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color statBC {
+            get {
+                return ((global::System.Drawing.Color)(this["statBC"]));
+            }
+            set {
+                this["statBC"] = value;
+            }
+        }
     }
 }

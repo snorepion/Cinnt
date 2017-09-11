@@ -1,5 +1,13 @@
 #CHANGELOG
 
+##0.4.0.2
+
+Various bugfixes
+
+Settings dialog fix
+
+Color setting for status strip
+
 ##0.4.0.1
 
 Fixed bug in Shuffle and Swap

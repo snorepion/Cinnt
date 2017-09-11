@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cinnt.Properties;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
-
 namespace Cinnt
 {
     public partial class MainForm : Form
@@ -401,7 +398,7 @@ namespace Cinnt
         }
         private void aboutBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cinnt version 0.4.0.0S\r\nMade by snorepion\r\nGithub: https://www.github.com/snorepion" + "\r\nSource code available at https://www.github.com/snorepion/cinnt" + "\r\nYou should not have paid for this software (other than by donating to snorepion via Paypal). If you did, request a refund IMMEDIATELY.");
+            MessageBox.Show("Cinnt version 0.4.0.2S\r\nMade by snorepion\r\nGithub: https://www.github.com/snorepion" + "\r\nSource code available at https://www.github.com/snorepion/cinnt" + "\r\nYou should not have paid for this software (other than by donating to snorepion via Paypal). If you did, request a refund IMMEDIATELY.");
         }
         private List<byte> GetHexFromBin(string bin)
         {
@@ -419,7 +416,7 @@ namespace Cinnt
                 covfefeBtn,garbleBtn,degarbleBtn,garbleDictBtn,importBtn,removeLttrBtn,addRandBtn,isoBtn,sbtrctBtn,insBtn,caseCtrlBtn,frmtBtn,fontBtn,settingsBtn,reverseBtn,rndmzBtn,autIndBtn,aboutBtn,sortBtn,shuffleBtn,rvrsBtn,findBtn,revBtn
             };
             object[] tbs = new object[] {
-                lttrCntTb,isoTb,sbtrctTb,insTb1,insTb2,findTb,tbExtender1,tbContainer2,tbExtender3,tbExtender4
+                lttrCntTb,isoTb,sbtrctTb,insTb1,insTb2,findTb,tbExtender1,tbContainer2,tbExtender3,tbExtender4,tbExtender5,panel1,panel2
             };
             mainTb.BackColor = Settings.Default.tbBC; mainTb.ForeColor = Settings.Default.tbFC;
             foreach (TextBox t in tbs.Take(6)) { t.BackColor = Settings.Default.tbBC; t.ForeColor = Settings.Default.tbFC; t.Font = Settings.Default.def_fnt; }
@@ -514,6 +511,9 @@ namespace Cinnt
     static class Ext
     {
         static RNGCryptoServiceProvider r = new RNGCryptoServiceProvider();
+        /// <summary>
+        /// Shuffles a list of items. Does not return a new list, applies to a specific list. 
+        /// </summary>
         public static void Shuffle<T>(this IList<T> il)
         {
             int i = il.Count;
@@ -533,6 +533,6 @@ namespace Cinnt
 }
 public class Override : ProfessionalColorTable
 {
-    public override Color StatusStripGradientBegin { get { return Color.White; } }
-    public override Color StatusStripGradientEnd { get { return Color.White; } }
+    public override Color StatusStripGradientBegin { get { return Settings.Default.statBC; } }
+    public override Color StatusStripGradientEnd { get { return Settings.Default.statBC; } }
 }
