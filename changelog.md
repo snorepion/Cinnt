@@ -1,5 +1,11 @@
 #CHANGELOG
 
+##0.4.0.1
+
+Fixed bug in Shuffle and Swap
+
+Increased efficiency and decreased memory taken up by Sort
+
 ##0.4.0 
 
 Fixed extremely inefficient subtraction process
