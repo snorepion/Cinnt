@@ -1,11 +1,11 @@
-![# Cinnt](https://i.imgur.com/wQ8m3so.png)
+![# Cinnt](https://i.imgur.com/hhZk4Wu.png)
 
 An array of string manipulation tools, ranging from fun (covfefeize) to useful (string to binary). It's pretty simple -- and small, so you can download it if you're having trouble figuring
 out what it does. If you're having trouble figuring out how it *works*, it's probably because I hate commenting and therefore did zero to `null` to make it easy to understand. It's not
 very complicated anyway, since I don't know very many advanced functions. Anyway, if you do find something you don't understand and have
 a question, feel free to contact me through my website or at snorepion@gmail.com.
 
-The Cinnt full logo uses [Raleway](https://github.com/theleagueof/raleway), released under the Open Font License. You may modify and use it without any restrictions - the SVG source is included in the source code.
+The Cinnt full logo uses [Raleway](https://github.com/theleagueof/raleway), released under the Open Font License. You may modify and use the logo without any restrictions - the SVG source is included in the source code.
 
 Features and whatnot:
 
