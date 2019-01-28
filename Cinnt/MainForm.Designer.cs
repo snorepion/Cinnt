@@ -33,8 +33,6 @@
             this.mainTb = new System.Windows.Forms.RichTextBox();
             this.Tt = new System.Windows.Forms.ToolTip(this.components);
             this.tbContainer2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,17 +87,19 @@
             this.mainTb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainTb.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
             this.mainTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mainTb.DetectUrls = false;
             this.mainTb.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainTb.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
             this.mainTb.Location = new System.Drawing.Point(4, 4);
             this.mainTb.Margin = new System.Windows.Forms.Padding(4);
             this.mainTb.Name = "mainTb";
             this.mainTb.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.mainTb.Size = new System.Drawing.Size(662, 453);
+            this.mainTb.Size = new System.Drawing.Size(662, 434);
             this.mainTb.TabIndex = 1;
-            this.mainTb.Text = "m";
-            this.mainTb.WordWrap = false;
+            this.mainTb.Text = "";
+            this.mainTb.WordWrap = global::Cinnt.Properties.Settings.Default.WordWrap;
             this.mainTb.TextChanged += new System.EventHandler(this.WordCountUpdate);
             // 
             // tbContainer2
@@ -107,47 +107,14 @@
             this.tbContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbContainer2.BackColor = System.Drawing.Color.White;
-            this.tbContainer2.Controls.Add(this.button2);
-            this.tbContainer2.Controls.Add(this.button1);
+            this.tbContainer2.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
             this.tbContainer2.Controls.Add(this.mainTb);
-            this.tbContainer2.Location = new System.Drawing.Point(16, 74);
+            this.tbContainer2.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
+            this.tbContainer2.Location = new System.Drawing.Point(16, 93);
             this.tbContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.tbContainer2.Name = "tbContainer2";
-            this.tbContainer2.Size = new System.Drawing.Size(670, 461);
+            this.tbContainer2.Size = new System.Drawing.Size(670, 442);
             this.tbContainer2.TabIndex = 38;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(651, 455);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(19, 6);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(651, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(19, 9);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // mainMenu
             // 
@@ -340,6 +307,7 @@
             this.addRandomLettersToolStripMenuItem.Name = "addRandomLettersToolStripMenuItem";
             this.addRandomLettersToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.addRandomLettersToolStripMenuItem.Text = "Add random letters";
+            this.addRandomLettersToolStripMenuItem.Click += new System.EventHandler(this.Add);
             // 
             // sortationToolStripMenuItem
             // 
@@ -466,25 +434,32 @@
             // 
             // argsTb
             // 
+            this.argsTb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.argsTb.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
             this.argsTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.argsTb.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.argsTb.Location = new System.Drawing.Point(10, 8);
+            this.argsTb.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
+            this.argsTb.Location = new System.Drawing.Point(10, 10);
             this.argsTb.Name = "argsTb";
             this.argsTb.Size = new System.Drawing.Size(652, 20);
             this.argsTb.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
             this.panel1.Controls.Add(this.argsTb);
-            this.panel1.Location = new System.Drawing.Point(16, 31);
+            this.panel1.Location = new System.Drawing.Point(16, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(670, 36);
+            this.panel1.Size = new System.Drawing.Size(670, 41);
             this.panel1.TabIndex = 45;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
@@ -493,6 +468,7 @@
             this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.tbContainer2);
             this.Controls.Add(this.panel1);
+            this.Font = global::Cinnt.Properties.Settings.Default.def_fnt;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenu;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -517,8 +493,6 @@
         private System.Windows.Forms.RichTextBox mainTb;
         private System.Windows.Forms.ToolTip Tt;
         private System.Windows.Forms.Panel tbContainer2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;

@@ -38,5 +38,8 @@
     <Setting Name="MaximumRand" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">536870912</Value>
     </Setting>
+    <Setting Name="WordWrap" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

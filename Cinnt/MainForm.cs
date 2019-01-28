@@ -96,11 +96,23 @@ namespace Cinnt
         }
         private void FrmLoad(object sender, EventArgs e)
         {
-            mainTb.BackColor = Settings.Default.tbBC; mainTb.ForeColor = Settings.Default.tbFC;
-            Font = Settings.Default.uiFont;
             BackColor = Settings.Default.uiBC;
             mainTb.Font = Settings.Default.def_fnt;
-            statStrip.Renderer = new ToolStripProfessionalRenderer(new Override());
+            ToolStripProfessionalRenderer rend = new ToolStripProfessionalRenderer(new Override()) { RoundedEdges = true };
+            statStrip.Renderer = rend;
+            mainMenu.Renderer = rend;
+            mainMenu.ForeColor = Settings.Default.btnFC;
+        }
+        private void ClipboardSet(string s)
+        {
+            if (Clipboard.GetText() != "")
+            {
+                if (MessageBox.Show("This will overwrite the contents of your clipboard. Continue?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Clipboard.SetText(s);
+                }
+            }
+            else Clipboard.SetText(s);
         }
         private void Revert(object sender, EventArgs e)
         {
@@ -486,7 +498,7 @@ namespace Cinnt
         {
             // doesn't store the original text in the OriginalContent in encryption for safety reasons
             DESCryptoServiceProvider des = new DESCryptoServiceProvider();
-            des.Key = Encoding.Unicode.GetBytes(Key);
+            des.Key = Encoding.UTF8.GetBytes(Key);
             des.GenerateIV();
             byte[] _new = new byte[mainTb.TextLength];
             des.CreateEncryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
@@ -495,7 +507,7 @@ namespace Cinnt
         private string DesDecrypt(string Key)
         {
             DESCryptoServiceProvider des = new DESCryptoServiceProvider();
-            des.Key = Encoding.Unicode.GetBytes(Key);
+            des.Key = Encoding.UTF8.GetBytes(Key);
             byte[] _new = new byte[mainTb.TextLength];
             des.CreateDecryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
             return Encoding.Unicode.GetString(_new);
@@ -503,7 +515,7 @@ namespace Cinnt
         private string AesEncrypt(string Key)
         {
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
-            aes.Key = Encoding.Unicode.GetBytes(Key);
+            aes.Key = Encoding.UTF8.GetBytes(Key);
             aes.GenerateIV();
             byte[] _new = new byte[mainTb.TextLength];
             aes.CreateEncryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
@@ -512,7 +524,7 @@ namespace Cinnt
         private string AesDecrypt(string Key)
         {
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
-            aes.Key = Encoding.Unicode.GetBytes(Key);
+            aes.Key = Encoding.UTF8.GetBytes(Key);
             byte[] _new = new byte[mainTb.TextLength];
             aes.CreateDecryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
             return Encoding.Unicode.GetString(_new);
@@ -520,7 +532,7 @@ namespace Cinnt
         private string Rc2Encrypt(string Key)
         {
             RC2CryptoServiceProvider rc2 = new RC2CryptoServiceProvider();
-            rc2.Key = Encoding.Unicode.GetBytes(Key);
+            rc2.Key = Encoding.UTF8.GetBytes(Key);
             rc2.GenerateIV();
             byte[] _new = new byte[mainTb.TextLength];
             rc2.CreateEncryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
@@ -529,7 +541,7 @@ namespace Cinnt
         private string Rc2Decrypt(string Key)
         {
             RC2CryptoServiceProvider rc2 = new RC2CryptoServiceProvider();
-            rc2.Key = Encoding.Unicode.GetBytes(Key);
+            rc2.Key = Encoding.UTF8.GetBytes(Key);
             byte[] _new = new byte[mainTb.TextLength];
             rc2.CreateDecryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
             return Encoding.Unicode.GetString(_new);
@@ -538,15 +550,23 @@ namespace Cinnt
         {
             byte[] b = new byte[32]; // 256-bit key
             new RNGCryptoServiceProvider().GetBytes(b);
-            if (Clipboard.GetText() != "") {
-                if (MessageBox.Show("This will overwrite the contents of your clipboard. Continue?", "Warning", MessageBoxButtons.YesNo)==DialogResult.Yes)
-                {
-                    Clipboard.SetText(Encoding.ASCII.GetString(b));
-                }
-            }
-            else Clipboard.SetText(Encoding.ASCII.GetString(b));
+            ClipboardSet(Encoding.UTF8.GetString(b));
         }
-
+        private void Hash(object sender, EventArgs e)
+        {
+            switch (GetOneArgument())
+            {
+                case "sha256":
+                    ClipboardSet(Encoding.UTF8.GetString(new SHA256CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text))));
+                    break;
+                case "sha512":
+                    ClipboardSet(Encoding.UTF8.GetString(new SHA512CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text))));
+                    break;
+                case "md5":
+                    ClipboardSet(Encoding.UTF8.GetString(new MD5CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text))));
+                    break;
+            }
+        }
         private string HashSha256()
         {
             SHA256CryptoServiceProvider sha = new SHA256CryptoServiceProvider();
@@ -637,7 +657,7 @@ namespace Cinnt
             OriginalContent = mainTb.Text;
             if (int.TryParse(GetOneArgument(), out int i))
             {
-                if (i < Settings.Default.MaximumRand)
+                if (i <= Settings.Default.MaximumRand)
                 {
                     mainTb.Text += GenerateString(i, false, mainTb.Text.Split('\n'));
                 }
@@ -645,6 +665,10 @@ namespace Cinnt
                 {
                     tsMsgReporterLbl.Text = "Error 201: Generating this many letters is prevented in Cinnt in order to protect your data. You can change the limit in Settings.";
                 }
+            }
+            else
+            {
+                tsMsgReporterLbl.Text = "Error 202: Illegal number";
             }
         }
         #endregion
@@ -706,6 +730,32 @@ namespace Cinnt
 }
 public class Override : ProfessionalColorTable
 {
+    // status strip
     public override Color StatusStripGradientBegin { get { return Settings.Default.statBC; } }
     public override Color StatusStripGradientEnd { get { return Settings.Default.statBC; } }
+
+    // main menu
+    public override Color MenuBorder { get { return Settings.Default.btnBC; } }
+    public override Color MenuItemSelected { get { return Settings.Default.btnMoBC; } }
+    public override Color MenuItemBorder { get { return Settings.Default.btnBC; } }
+    public override Color MenuItemSelectedGradientBegin { get { return Settings.Default.btnMoBC; } }
+    public override Color MenuItemSelectedGradientEnd { get { return Settings.Default.btnMoBC; } }
+    public override Color MenuItemPressedGradientBegin { get { return Settings.Default.btnMdBC; } }
+    public override Color MenuItemPressedGradientEnd { get { return Settings.Default.btnMdBC; } }
+    public override Color MenuStripGradientBegin { get { return Settings.Default.statBC; } }
+    public override Color MenuStripGradientEnd { get { return Settings.Default.statBC; } }
+    public override Color ButtonPressedGradientBegin { get { return Settings.Default.btnMdBC; } }
+    public override Color ButtonPressedGradientEnd { get { return Settings.Default.btnMdBC; } }
+    public override Color ButtonPressedHighlight { get { return Settings.Default.btnMdBC; } }
+    public override Color ButtonPressedBorder { get { return Settings.Default.btnMdBC; } }
+    public override Color ButtonPressedHighlightBorder { get { return Settings.Default.btnMdBC; } }
+    public override Color ButtonSelectedGradientBegin { get { return Settings.Default.btnMoBC; } }
+    public override Color ButtonSelectedGradientEnd { get { return Settings.Default.btnMoBC; } }
+    public override Color ButtonSelectedHighlight { get { return Settings.Default.btnMoBC; } }
+    public override Color ButtonSelectedBorder { get { return Settings.Default.btnMoBC; } }
+    public override Color ButtonSelectedHighlightBorder { get { return Settings.Default.btnMoBC; } }
+    public override Color CheckBackground { get { return Settings.Default.btnBC; } }
+    public override Color ImageMarginGradientBegin { get { return Settings.Default.btnBC; } }
+    public override Color ImageMarginGradientMiddle { get { return Settings.Default.btnBC; } }
+    public override Color ImageMarginGradientEnd { get { return Settings.Default.btnBC; } }
 }

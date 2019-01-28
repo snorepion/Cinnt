@@ -40,9 +40,13 @@
             this.uiFntBtn = new System.Windows.Forms.Button();
             this.modBtn = new System.Windows.Forms.Button();
             this.colorSelectLb = new System.Windows.Forms.ListBox();
+            this.wordWrapCb = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.maxLetterNud = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.genTp.SuspendLayout();
             this.persTp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxLetterNud)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -57,6 +61,9 @@
             // 
             // genTp
             // 
+            this.genTp.Controls.Add(this.maxLetterNud);
+            this.genTp.Controls.Add(this.label2);
+            this.genTp.Controls.Add(this.wordWrapCb);
             this.genTp.Controls.Add(this.linkLabel2);
             this.genTp.Controls.Add(this.linkLabel1);
             this.genTp.Controls.Add(this.label1);
@@ -181,6 +188,45 @@
             this.colorSelectLb.Size = new System.Drawing.Size(381, 204);
             this.colorSelectLb.TabIndex = 0;
             // 
+            // wordWrapCb
+            // 
+            this.wordWrapCb.AutoSize = true;
+            this.wordWrapCb.Location = new System.Drawing.Point(9, 70);
+            this.wordWrapCb.Name = "wordWrapCb";
+            this.wordWrapCb.Size = new System.Drawing.Size(104, 24);
+            this.wordWrapCb.TabIndex = 3;
+            this.wordWrapCb.Text = "Word wrap";
+            this.wordWrapCb.Checked = Properties.Settings.Default.WordWrap;
+            this.wordWrapCb.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Max letters (/1024)";
+            // 
+            // maxLetterNud
+            // 
+            this.maxLetterNud.Location = new System.Drawing.Point(148, 95);
+            this.maxLetterNud.Maximum = new decimal(new int[] {
+            5242880,
+            0,
+            0,
+            0});
+            this.maxLetterNud.Name = "maxLetterNud";
+            this.maxLetterNud.Size = new System.Drawing.Size(122, 27);
+            this.maxLetterNud.TabIndex = 5;
+            this.maxLetterNud.Value = new decimal(new int[]
+            {
+                Properties.Settings.Default.MaximumRand,
+                0,
+                0,
+                0
+            });
+            // 
             // Options
             // 
             this.AcceptButton = this.modBtn;
@@ -192,10 +238,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Options";
             this.Text = "Cinnt Options";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Options_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.genTp.ResumeLayout(false);
             this.genTp.PerformLayout();
             this.persTp.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.maxLetterNud)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -213,5 +261,8 @@
         private System.Windows.Forms.Button uiFntBtn;
         private System.Windows.Forms.Button modBtn;
         private System.Windows.Forms.ListBox colorSelectLb;
+        private System.Windows.Forms.NumericUpDown maxLetterNud;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox wordWrapCb;
     }
 }

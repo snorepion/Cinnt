@@ -66,5 +66,12 @@ namespace Cinnt
                 cc[colorSelectLb.SelectedIndex] = cd.Color;
             }
         }
+        private void Options_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // save non-personalization settings
+            Settings.Default.MaximumRand = (int)maxLetterNud.Value * 1024;
+            Settings.Default.WordWrap = wordWrapCb.Checked;
+            Settings.Default.Save();
+        }
     }
 }
