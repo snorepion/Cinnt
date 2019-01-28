@@ -77,9 +77,11 @@
             this.parCntLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.statStrip = new System.Windows.Forms.StatusStrip();
             this.argsTb = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tbContainer2.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.statStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTb
@@ -94,9 +96,9 @@
             this.mainTb.Margin = new System.Windows.Forms.Padding(4);
             this.mainTb.Name = "mainTb";
             this.mainTb.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.mainTb.Size = new System.Drawing.Size(666, 422);
+            this.mainTb.Size = new System.Drawing.Size(662, 453);
             this.mainTb.TabIndex = 1;
-            this.mainTb.Text = "";
+            this.mainTb.Text = "m";
             this.mainTb.WordWrap = false;
             this.mainTb.TextChanged += new System.EventHandler(this.WordCountUpdate);
             // 
@@ -109,10 +111,10 @@
             this.tbContainer2.Controls.Add(this.button2);
             this.tbContainer2.Controls.Add(this.button1);
             this.tbContainer2.Controls.Add(this.mainTb);
-            this.tbContainer2.Location = new System.Drawing.Point(16, 106);
+            this.tbContainer2.Location = new System.Drawing.Point(16, 74);
             this.tbContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.tbContainer2.Name = "tbContainer2";
-            this.tbContainer2.Size = new System.Drawing.Size(672, 429);
+            this.tbContainer2.Size = new System.Drawing.Size(670, 461);
             this.tbContainer2.TabIndex = 38;
             // 
             // button2
@@ -124,7 +126,7 @@
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(653, 423);
+            this.button2.Location = new System.Drawing.Point(651, 455);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(19, 6);
@@ -140,7 +142,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(653, 0);
+            this.button1.Location = new System.Drawing.Point(651, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(19, 9);
@@ -281,39 +283,39 @@
             // encryptToolStripMenuItem
             // 
             this.encryptToolStripMenuItem.Name = "encryptToolStripMenuItem";
-            this.encryptToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.encryptToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
             this.encryptToolStripMenuItem.Text = "Encrypt";
             this.encryptToolStripMenuItem.Click += new System.EventHandler(this.Encrypt);
             // 
             // decryptToolStripMenuItem
             // 
             this.decryptToolStripMenuItem.Name = "decryptToolStripMenuItem";
-            this.decryptToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.decryptToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
             this.decryptToolStripMenuItem.Text = "Decrypt";
             this.decryptToolStripMenuItem.Click += new System.EventHandler(this.Decrypt);
             // 
             // hashToolStripMenuItem
             // 
             this.hashToolStripMenuItem.Name = "hashToolStripMenuItem";
-            this.hashToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.hashToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
             this.hashToolStripMenuItem.Text = "Hash";
             // 
             // generateKeyToolStripMenuItem
             // 
             this.generateKeyToolStripMenuItem.Name = "generateKeyToolStripMenuItem";
-            this.generateKeyToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.generateKeyToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
             this.generateKeyToolStripMenuItem.Text = "Generate Key";
             this.generateKeyToolStripMenuItem.Click += new System.EventHandler(this.CreateKey);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(169, 6);
             // 
             // convertToolStripMenuItem
             // 
             this.convertToolStripMenuItem.Name = "convertToolStripMenuItem";
-            this.convertToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.convertToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
             this.convertToolStripMenuItem.Text = "Convert";
             this.convertToolStripMenuItem.Click += new System.EventHandler(this.Format);
             // 
@@ -464,10 +466,21 @@
             // 
             // argsTb
             // 
-            this.argsTb.Location = new System.Drawing.Point(16, 40);
+            this.argsTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.argsTb.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.argsTb.Location = new System.Drawing.Point(10, 8);
             this.argsTb.Name = "argsTb";
-            this.argsTb.Size = new System.Drawing.Size(421, 22);
+            this.argsTb.Size = new System.Drawing.Size(652, 20);
             this.argsTb.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.argsTb);
+            this.panel1.Location = new System.Drawing.Point(16, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(670, 36);
+            this.panel1.TabIndex = 45;
             // 
             // MainForm
             // 
@@ -476,10 +489,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(701, 577);
-            this.Controls.Add(this.argsTb);
             this.Controls.Add(this.statStrip);
             this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.tbContainer2);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenu;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -492,6 +505,8 @@
             this.mainMenu.PerformLayout();
             this.statStrip.ResumeLayout(false);
             this.statStrip.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -546,6 +561,7 @@
         private System.Windows.Forms.ToolStripMenuItem decryptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem specialCharactersToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

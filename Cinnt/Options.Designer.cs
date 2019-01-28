@@ -31,15 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.genTp = new System.Windows.Forms.TabPage();
-            this.persTp = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.colorSelectLb = new System.Windows.Forms.ListBox();
-            this.modBtn = new System.Windows.Forms.Button();
-            this.uiFntBtn = new System.Windows.Forms.Button();
-            this.resetBtn = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.persTp = new System.Windows.Forms.TabPage();
             this.applyBtn = new System.Windows.Forms.Button();
+            this.resetBtn = new System.Windows.Forms.Button();
+            this.uiFntBtn = new System.Windows.Forms.Button();
+            this.modBtn = new System.Windows.Forms.Button();
+            this.colorSelectLb = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.genTp.SuspendLayout();
             this.persTp.SuspendLayout();
@@ -60,13 +60,52 @@
             this.genTp.Controls.Add(this.linkLabel2);
             this.genTp.Controls.Add(this.linkLabel1);
             this.genTp.Controls.Add(this.label1);
-            this.genTp.Location = new System.Drawing.Point(4, 24);
+            this.genTp.Location = new System.Drawing.Point(4, 29);
             this.genTp.Name = "genTp";
             this.genTp.Padding = new System.Windows.Forms.Padding(3);
-            this.genTp.Size = new System.Drawing.Size(469, 225);
+            this.genTp.Size = new System.Drawing.Size(469, 220);
             this.genTp.TabIndex = 0;
             this.genTp.Text = "General";
             this.genTp.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.SandyBrown;
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkLabel2.Location = new System.Drawing.Point(5, 47);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(53, 20);
+            this.linkLabel2.TabIndex = 2;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Github";
+            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.SandyBrown;
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkLabel1.Location = new System.Drawing.Point(5, 28);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(110, 20);
+            this.linkLabel1.TabIndex = 1;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Report an issue";
+            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(159, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Version: Cinnt v1.0.0.0R";
             // 
             // persTp
             // 
@@ -75,57 +114,58 @@
             this.persTp.Controls.Add(this.uiFntBtn);
             this.persTp.Controls.Add(this.modBtn);
             this.persTp.Controls.Add(this.colorSelectLb);
-            this.persTp.Location = new System.Drawing.Point(4, 24);
+            this.persTp.Location = new System.Drawing.Point(4, 29);
             this.persTp.Name = "persTp";
             this.persTp.Padding = new System.Windows.Forms.Padding(3);
-            this.persTp.Size = new System.Drawing.Size(469, 225);
+            this.persTp.Size = new System.Drawing.Size(469, 220);
             this.persTp.TabIndex = 1;
             this.persTp.Text = "Personalization";
             this.persTp.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // applyBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Version: Cinnt v0.4.0.2S";
+            this.applyBtn.Location = new System.Drawing.Point(391, 168);
+            this.applyBtn.Name = "applyBtn";
+            this.applyBtn.Size = new System.Drawing.Size(72, 43);
+            this.applyBtn.TabIndex = 4;
+            this.applyBtn.Text = "Apply";
+            this.applyBtn.UseVisualStyleBackColor = true;
+            this.applyBtn.Click += new System.EventHandler(this.applyBtn_Click);
             // 
-            // linkLabel1
+            // resetBtn
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.SandyBrown;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.linkLabel1.Location = new System.Drawing.Point(5, 23);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(87, 15);
-            this.linkLabel1.TabIndex = 1;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Report an issue";
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.resetBtn.Location = new System.Drawing.Point(391, 121);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(72, 41);
+            this.resetBtn.TabIndex = 3;
+            this.resetBtn.Text = "Reset";
+            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
-            // linkLabel2
+            // uiFntBtn
             // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.SandyBrown;
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.linkLabel2.Location = new System.Drawing.Point(5, 38);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(43, 15);
-            this.linkLabel2.TabIndex = 2;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Github";
-            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.uiFntBtn.Location = new System.Drawing.Point(391, 62);
+            this.uiFntBtn.Name = "uiFntBtn";
+            this.uiFntBtn.Size = new System.Drawing.Size(72, 53);
+            this.uiFntBtn.TabIndex = 2;
+            this.uiFntBtn.Text = "Change UI Font";
+            this.uiFntBtn.UseVisualStyleBackColor = true;
+            this.uiFntBtn.Click += new System.EventHandler(this.uiFntBtn_Click);
+            // 
+            // modBtn
+            // 
+            this.modBtn.Location = new System.Drawing.Point(391, 7);
+            this.modBtn.Name = "modBtn";
+            this.modBtn.Size = new System.Drawing.Size(72, 49);
+            this.modBtn.TabIndex = 1;
+            this.modBtn.Text = "Modify";
+            this.modBtn.UseVisualStyleBackColor = true;
+            this.modBtn.Click += new System.EventHandler(this.modBtn_Click);
             // 
             // colorSelectLb
             // 
             this.colorSelectLb.FormattingEnabled = true;
-            this.colorSelectLb.ItemHeight = 15;
+            this.colorSelectLb.ItemHeight = 20;
             this.colorSelectLb.Items.AddRange(new object[] {
             "Textbox background",
             "Textbox foreground",
@@ -138,52 +178,13 @@
             "Status strip background"});
             this.colorSelectLb.Location = new System.Drawing.Point(4, 7);
             this.colorSelectLb.Name = "colorSelectLb";
-            this.colorSelectLb.Size = new System.Drawing.Size(381, 214);
+            this.colorSelectLb.Size = new System.Drawing.Size(381, 204);
             this.colorSelectLb.TabIndex = 0;
-            // 
-            // modBtn
-            // 
-            this.modBtn.Location = new System.Drawing.Point(391, 7);
-            this.modBtn.Name = "modBtn";
-            this.modBtn.Size = new System.Drawing.Size(72, 23);
-            this.modBtn.TabIndex = 1;
-            this.modBtn.Text = "Modify";
-            this.modBtn.UseVisualStyleBackColor = true;
-            this.modBtn.Click += new System.EventHandler(this.modBtn_Click);
-            // 
-            // uiFntBtn
-            // 
-            this.uiFntBtn.Location = new System.Drawing.Point(391, 37);
-            this.uiFntBtn.Name = "uiFntBtn";
-            this.uiFntBtn.Size = new System.Drawing.Size(72, 46);
-            this.uiFntBtn.TabIndex = 2;
-            this.uiFntBtn.Text = "Change UI Font";
-            this.uiFntBtn.UseVisualStyleBackColor = true;
-            this.uiFntBtn.Click += new System.EventHandler(this.uiFntBtn_Click);
-            // 
-            // resetBtn
-            // 
-            this.resetBtn.Location = new System.Drawing.Point(391, 89);
-            this.resetBtn.Name = "resetBtn";
-            this.resetBtn.Size = new System.Drawing.Size(72, 23);
-            this.resetBtn.TabIndex = 3;
-            this.resetBtn.Text = "Reset";
-            this.resetBtn.UseVisualStyleBackColor = true;
-            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
-            // 
-            // applyBtn
-            // 
-            this.applyBtn.Location = new System.Drawing.Point(391, 119);
-            this.applyBtn.Name = "applyBtn";
-            this.applyBtn.Size = new System.Drawing.Size(72, 23);
-            this.applyBtn.TabIndex = 4;
-            this.applyBtn.Text = "Apply";
-            this.applyBtn.UseVisualStyleBackColor = true;
-            this.applyBtn.Click += new System.EventHandler(this.applyBtn_Click);
             // 
             // Options
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AcceptButton = this.modBtn;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 254);
             this.Controls.Add(this.tabControl1);

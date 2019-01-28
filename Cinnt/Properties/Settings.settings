@@ -2,10 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Cinnt.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="GarbleSave" Type="System.String" Scope="User">
-      <Value Profile="(Default)">null
-null</Value>
-    </Setting>
     <Setting Name="def_fnt" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)">Segoe UI, 9pt</Value>
     </Setting>
@@ -38,6 +34,9 @@ null</Value>
     </Setting>
     <Setting Name="statBC" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="MaximumRand" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">536870912</Value>
     </Setting>
   </Settings>
 </SettingsFile>

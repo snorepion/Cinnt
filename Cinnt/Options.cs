@@ -14,7 +14,7 @@ namespace Cinnt
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/snorepion/Cinnt/issues/new?title=[v0.4.0.0S]&body=[v0.4.0.0S]&labels=bug");
+            Process.Start("https://github.com/snorepion/Cinnt/issues/new?title=[v1.0.0.0R]&body=[v1.0.0.0R]&labels=bug");
         }
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -52,11 +52,9 @@ namespace Cinnt
         }
         private void resetBtn_Click(object sender, EventArgs e)
         {
-            Font f = Settings.Default.def_fnt;
-            string gs = Settings.Default.GarbleSave;
+            Font f = Settings.Default.def_fnt; // reset doesn't change default font
             Settings.Default.Reset();
             Settings.Default.def_fnt = f;
-            Settings.Default.GarbleSave = gs;
         }
         ColorDialog cd = new ColorDialog();
         Color[] cc = new Color[] { Settings.Default.tbBC, Settings.Default.tbFC, Settings.Default.btnBC, Settings.Default.btnMoBC, Settings.Default.btnMdBC, Settings.Default.btnFC, Settings.Default.uiBC, Settings.Default.matchC, Settings.Default.statBC };
