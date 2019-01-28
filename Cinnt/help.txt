@@ -1,0 +1,75 @@
+The new arguments system is not always obvious. Here are a list of all of the commands with their arguments and what they do. Note that the command name should NOT be entered in the argument box, it is simply here for clarity.
+
+EDIT MENU
+----------
+Find <string> | Ctrl+F
+	Marks places where the input (regex allowed) is found.
+
+Replace <string> <string> | Ctrl+H
+	Replaces using regex -- the find pattern is the first argument, and the replacement is the second.
+
+Isolate <string> | Ctrl+I
+	Removes everything *but* instances of the input string. This function can also be performed with regex.
+	
+Subtract <string> | Ctrl+T
+	Removes every instance of the input string. This function can also be performed with regex.
+
+Insert <int> <string> | Ctrl+R
+	Inserts a string at the specified zero-based index.
+
+Remove letters <int> <int>
+	Removes every character (even if not technically a letter) between indices 1 and 2, both zero-based. 
+	
+Change case <special>
+	This takes one of four inputs:
+		caps
+		lower
+		sentence
+		-sentence
+	The last means reverse sentence.
+	
+Special characters <Unicode codepoint>+ | Ctrl+P
+	If arguments are present, inserts the characters based on the codepoints in the arguments (formatted as U+######## in hex).
+	Otherwise, shows a dialog box allowing the user to select a Unicode character.
+	
+Undo | Ctrl+Q
+	Reverts text to the previous version before performing the action. This is not the same as the regular textbox undo Ctrl+Z, which only reverts your manual changes.
+	This does NOT work on text that has had encryption applied for security reasons (it's not safe to continue storing unencrypted sensitive data in RAM).
+
+ENCRYPTION MENU
+---------------
+Encrypt <special> <string>
+	Encrypts a text with one of three chosen symmetric algorithms: AES, DES, and RC2. These are in arguments as aes, des, and rc2 respectively. The string is used for the key.
+	
+Decrypt <special> <string>
+	See above. Decrypts text.
+	
+Hash <special>
+	Computes the hash of your text using one of three popular hash types: SHA256, SHA512, and MD5. These are in arguments as sha256, sha512, and md5 respectively. 
+	The hash is copied to your clipboard, but it will warn you if there is text currently on it.
+	
+Generate Key
+	Generates a true random 256-bit key that you can use to encrypt data. This is copied to your clipboard, and you should remove it immediately after writing it down.
+	
+Convert <special> <special>
+	Converts a piece of data between human-readable and two levels of machine-readable. Use ascii for text, hex for hexadecimal, and bin for binary.
+
+RANDOM MENU
+-----------
+Covfefeize | Ctrl+O
+	Takes all the way up to the last 5 letters, then adds a consonant and a vowel twice. Doesn't overwrite original text. 1 per line.
+	This originates due to Donald Trump, who tweeted simply "Despite the constant negative press covfefe" several minutes after midnight on May 31, 2017, presumably trying to say "coverage". This became a popularly-circulated meme among both Trump supporters and non-supporters, and a Code Golf Stack Exchange challenge about implementing it sparked its addition into Cinnt.
+	
+Add random letters
+	Adds pseudorandomly generated letters to the end of the text. Legal letters are pulled from the settings rather than arguments, and default to the 26-letter lowercase English alphabet.
+
+SORTATION MENU
+--------------
+Sort <char>+ | Ctrl+S
+	Sorts a list of strings alphabetically, splitting the list based on the chosen separator(s) in the arguments.
+	
+Shuffle <char>+ | Ctrl+L
+	Shuffles a list of strings or creates an anagram (if there are no arguments).
+	
+Reverse <char>+
+	Reverses a list of strings or the entire text (if there are no arguments).
