@@ -5,10 +5,10 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Unicode;
 using System.Windows.Forms;
 using Cinnt.Properties;
-using System.Text.RegularExpressions;
 
 namespace Cinnt
 {
@@ -29,7 +29,7 @@ namespace Cinnt
         {
             string[] args = argsTb.Text.Split(' ');
             if (args.Length > 1) return args;
-            else { tsMsgReporterLbl.Text = "Error A1: not enough arguments"; return null; }
+            else { tsMsgReporterLbl.Text = "Error A1: not enough arguments"; return new string[] { " ", " " }; }
         }
         private void WordCountUpdate(object sender, EventArgs e)
         {
@@ -92,6 +92,7 @@ namespace Cinnt
             {
                 mainTb.Font = fd.Font;
                 Settings.Default.def_fnt = fd.Font;
+                Settings.Default.Save();
             }
         }
         private void FrmLoad(object sender, EventArgs e)
@@ -179,9 +180,16 @@ namespace Cinnt
             {
                 foreach (string s in mainTb.Text.Split('\n'))
                 {
-                    sb.Append(s);
-                    sb.Append("\r\n");
-                    sb.Remove(i, ɪ); // removes from argument 1 to argument 2
+                    if (i < s.Length - 1 && i + ɪ < s.Length - 1)
+                    {
+                        sb.Append(s);
+                        sb.Append("\r\n");
+                        sb.Remove(i, ɪ); // removes arg 2 elements from text beginning at argument 1
+                    }
+                    else
+                    {
+                        sb.Append(s + "\r\n");
+                    }
                 }
                 mainTb.Text = sb.ToString();
             }
@@ -249,7 +257,7 @@ namespace Cinnt
                 }
                 return new string(cc);
             }
-            if (index == 5) // i have no idea what this is and don't have support for it atm
+            if (index == 5) // i do not remember what this is and don't have support for it atm
             {
                 string[] alternate = mainTb.Text.Split(new char[] { ' ', '\r', '\n' });
                 int i = 0;
@@ -297,10 +305,18 @@ namespace Cinnt
             else
             {
                 string[] args = GetMultipleArguments();
+                if (args[0] == " ") { args = new string[] { GetOneArgument() };  tsMsgReporterLbl.Text = "No messages to report."; }
                 StringBuilder addChars = new StringBuilder();
                 foreach (string s in args)
                 {
-                    addChars.Append(UnicodeInfo.GetDisplayText(Convert.ToInt32(s)));
+                    try
+                    {
+                        addChars.Append(UnicodeInfo.GetDisplayText(Convert.ToInt32(s)));
+                    }
+                    catch
+                    {
+                        tsMsgReporterLbl.Text = "Error U1: Not a Unicode character";
+                    }
                 }
                 mainTb.Text = mainTb.Text.Insert(mainTb.SelectionStart, addChars.ToString());
             }
@@ -449,109 +465,6 @@ namespace Cinnt
             return lb;
         }
         #endregion
-        #region Encryption, decryption, and hashing
-        private void Encrypt(object sender, EventArgs e)
-        {
-            string[] args = GetMultipleArguments();
-            switch (args[0])
-            {
-                case "des":
-                    if (args.Length > 1) mainTb.Text = DesEncrypt(String.Concat(args.Skip(1)));
-                    else tsMsgReporterLbl.Text = "Error A1: not enough arguments";
-                    break;
-                case "aes":
-                    if (args.Length > 1) mainTb.Text = AesEncrypt(String.Concat(args.Skip(1)));
-                    else tsMsgReporterLbl.Text = "Error A1: not enough arguments";
-                    break;
-                case "rc2":
-                    if (args.Length > 1) mainTb.Text = Rc2Encrypt(String.Concat(args.Skip(1)));
-                    else tsMsgReporterLbl.Text = "Error A1: not enough arguments";
-                    break;
-                default:
-                    tsMsgReporterLbl.Text = "Error A2: invalid argument (<special>)";
-                    break;
-            }
-        }
-        private void Decrypt(object sender, EventArgs e)
-        {
-            string[] args = GetMultipleArguments();
-            switch (args[0])
-            {
-                case "des":
-                    if (args.Length > 1) mainTb.Text = DesDecrypt(String.Concat(args.Skip(1)));
-                    else tsMsgReporterLbl.Text = "Error A1: not enough arguments";
-                    break;
-                case "aes":
-                    if (args.Length > 1) mainTb.Text = AesDecrypt(String.Concat(args.Skip(1)));
-                    else tsMsgReporterLbl.Text = "Error A1: not enough arguments";
-                    break;
-                case "rc2":
-                    if (args.Length > 1) mainTb.Text = Rc2Decrypt(String.Concat(args.Skip(1)));
-                    else tsMsgReporterLbl.Text = "Error A1: not enough arguments";
-                    break;
-                default:
-                    tsMsgReporterLbl.Text = "Error A2: invalid argument (<special>)";
-                    break;
-            }
-        }
-        private string DesEncrypt(string Key)
-        {
-            // doesn't store the original text in the OriginalContent in encryption for safety reasons
-            DESCryptoServiceProvider des = new DESCryptoServiceProvider();
-            des.Key = Encoding.UTF8.GetBytes(Key);
-            des.GenerateIV();
-            byte[] _new = new byte[mainTb.TextLength];
-            des.CreateEncryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
-            return Encoding.Unicode.GetString(_new);
-        }
-        private string DesDecrypt(string Key)
-        {
-            DESCryptoServiceProvider des = new DESCryptoServiceProvider();
-            des.Key = Encoding.UTF8.GetBytes(Key);
-            byte[] _new = new byte[mainTb.TextLength];
-            des.CreateDecryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
-            return Encoding.Unicode.GetString(_new);
-        }
-        private string AesEncrypt(string Key)
-        {
-            AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
-            aes.Key = Encoding.UTF8.GetBytes(Key);
-            aes.GenerateIV();
-            byte[] _new = new byte[mainTb.TextLength];
-            aes.CreateEncryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
-            return Encoding.Unicode.GetString(_new);
-        }
-        private string AesDecrypt(string Key)
-        {
-            AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
-            aes.Key = Encoding.UTF8.GetBytes(Key);
-            byte[] _new = new byte[mainTb.TextLength];
-            aes.CreateDecryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
-            return Encoding.Unicode.GetString(_new);
-        }
-        private string Rc2Encrypt(string Key)
-        {
-            RC2CryptoServiceProvider rc2 = new RC2CryptoServiceProvider();
-            rc2.Key = Encoding.UTF8.GetBytes(Key);
-            rc2.GenerateIV();
-            byte[] _new = new byte[mainTb.TextLength];
-            rc2.CreateEncryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
-            return Encoding.Unicode.GetString(_new);
-        }
-        private string Rc2Decrypt(string Key)
-        {
-            RC2CryptoServiceProvider rc2 = new RC2CryptoServiceProvider();
-            rc2.Key = Encoding.UTF8.GetBytes(Key);
-            byte[] _new = new byte[mainTb.TextLength];
-            rc2.CreateDecryptor().TransformBlock(Encoding.Unicode.GetBytes(mainTb.Text), 0, mainTb.TextLength, _new, 0);
-            return Encoding.Unicode.GetString(_new);
-        }
-        private void CreateKey(object sender, EventArgs e)
-        {
-            byte[] b = new byte[32]; // 256-bit key
-            new RNGCryptoServiceProvider().GetBytes(b);
-            ClipboardSet(Encoding.UTF8.GetString(b));
-        }
         private void Hash(object sender, EventArgs e)
         {
             switch (GetOneArgument())
@@ -582,7 +495,6 @@ namespace Cinnt
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
             return Encoding.ASCII.GetString(md5.ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text)));
         }
-        #endregion
         #region Random
         // only returns an actual string for covfefe=false
         private string GenerateString(int letters, bool covfefe, string[] array)
@@ -635,11 +547,10 @@ namespace Cinnt
                 }
                 else
                 {
-                    string alphabet = "abcdefghijklmnopqrstuvwxyz";
                     char a;
                     for (int i = 0; i <= letters; i++)
                     {
-                        a = alphabet.ToCharArray()[r.Next(alphabet.Length)];
+                        a = Settings.Default.Alphabet.ToCharArray()[r.Next(Settings.Default.Alphabet.Length)];
                         sb.Append(a);
                     }
                     return sb.ToString();
@@ -678,13 +589,6 @@ namespace Cinnt
             OriginalContent = mainTb.Text;
             mainTb.Text = String.Concat(mainTb.Text.Reverse());
         }
-        private void Randomize(object sender, EventArgs e)
-        {
-            OriginalContent = mainTb.Text;
-            var lc = new List<char>(mainTb.Text.ToCharArray());
-            lc.Shuffle();
-            mainTb.Text = String.Concat(lc);
-        }
         private void Sort(object sender, EventArgs e)
         {
             OriginalContent = mainTb.Text;
@@ -699,9 +603,17 @@ namespace Cinnt
             OriginalContent = mainTb.Text;
             char c = '\n';
             if (argsTb.Text != "") c = argsTb.Text[0];
+            else { Randomize(null, null); return; }
             List<string> list = mainTb.Text.Split(c).ToList();
             list.Shuffle();
             mainTb.Text = String.Join(argsTb.Text[0].ToString(), list);
+        }
+        private void Randomize(object sender, EventArgs e)
+        {
+            OriginalContent = mainTb.Text;
+            var lc = new List<char>(mainTb.Text.ToCharArray());
+            lc.Shuffle();
+            mainTb.Text = String.Concat(lc);
         }
         #endregion
     }

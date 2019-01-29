@@ -178,5 +178,17 @@ namespace Cinnt.Properties {
                 this["WordWrap"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("abcdefghijklmnopqrstuvwxyz")]
+        public string Alphabet {
+            get {
+                return ((string)(this["Alphabet"]));
+            }
+            set {
+                this["Alphabet"] = value;
+            }
+        }
     }
 }

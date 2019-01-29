@@ -66,12 +66,69 @@ namespace Cinnt
                 cc[colorSelectLb.SelectedIndex] = cd.Color;
             }
         }
+        private void alphabetCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            alphTb.Text = WritingSystems.GetAll()[alphabetCb.SelectedIndex];
+        }
         private void Options_FormClosing(object sender, FormClosingEventArgs e)
         {
             // save non-personalization settings
             Settings.Default.MaximumRand = (int)maxLetterNud.Value * 1024;
             Settings.Default.WordWrap = wordWrapCb.Checked;
+            Settings.Default.Alphabet = alphTb.Text;
             Settings.Default.Save();
+        }
+    }
+    static class WritingSystems
+    {
+        public const string LatinNoCaps = "abcdefghijklmnopqrstuvwxyz";
+        public const string LatinCaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        public const string CyrillicNoCaps = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        public const string CyrillicCaps = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+        public const string Arabic = "ضصشسزرذدخحجثتباءيوهنملكقفغعظط";
+        public const string Devanagari = "कखगघङचछजझञटठडढणतथदधनपफबभमक़ख़ग़ज़ड़ढ़फ़यरलळवहशषसअआइईउऊऋॠऌॡएऐओऔ"; //might not be formatted right
+        public const string JapaneseHiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
+        public const string JapaneseKatakana = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+        public const string JapaneseKana = JapaneseHiragana + JapaneseKatakana;
+        public const string Syriac = "ܟܝܛܚܙܘܗܕܓܒܐܬܫܪܩܨܦܥܣܢܡܠ";
+        public const string ArmenianNoCaps = "աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆև";
+        public const string ArmenianCaps = "ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔՕՖևաբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆև";
+        public const string GeorgianModern = "აბგდევზთიკლმნოპზჰრსტუფქღყშჩცძწჭხჯჰ";
+        public const string Geez = "ሀሁሂሃሄህሆለሉሊላሌልሎሏሐሑሒሓሔሕሖሗመሙሚማሜምሞሟሠሡሢሣሤሥሦሧረሩሪራሬርሮሯሰሱሲሳሴስሶሷሸሹሺሻሼሽሾሿቀቁቂቃቄቅቆቇቐቑቒቓቔቕቖበቡቢባቤብቦቧቨቩቪቫቬቭቮቯተቱቲታቴትቶቷቸቹቺቻቼችቾቿኀኁኂኃኄኅኆኇነኑኒናኔንኖኗኘኙኚኛኜኝኞኟአኡኢኣኤእኦኧከኩኪካኬክኮኯኸኹኺኻኼኽኾወዉዊዋዌውዎዐዑዒዓዔዕዖዘዙዚዛዜዝዞዟዠዡዢዣዤዥዦዧየዩዪያዬይዮዯደዱዲዳዴድዶዷዸዹዺዻዼዽዾዿጀጁጂጃጄጅጆጇገጉጊጋጌግጎጏጘጙጚጛጜጝጞጟጠጡጢጣጤጥጦጧጨጩጪጫጬጭጮጯጰጱጲጳጴጵጶጷጸጹጺጻጼጽጾጿጸጹጺጻጼጽጾጿፀፁፂፃፄፅፆፇፈፉፊፋፌፍፎፏፐፑፒፓፔፕፖፗቈቊቋቌቍቘቚቛቜቝኈኊኋኌኍኰኲኳኴኵዀዂዃዄዅጐጒጓጔጕ";
+        public const string Cree = "ᐁᐃᐅᐊᐄᐆᐋᐯᐱᐳᐸᐲᐴᐹᑉᑌᑎᑐᑕᑏᑑᑖᑦᑫᑭᑯᑲᑮᑰᑳᒃᒉᒋᒍᒐᒌᒎᒑᒡᒣᒥᒧᒪᒦᒨᒫᒻᓀᓂᓄᓇᓃᓅᓈᓐᓭᓯᓱᓴᓰᓲᓵᔅᔐᔑᔓᔕᔒᔔᔖᔥᔦᔨᔪᔭᔩᔫᔮᔾᕃᕆᕈᕋᕇᕉᕌᕐᓓᓕᓗᓚᓖᓘᓛᓪᕓᕕᕗᕙᕖᕘᕚᕝᕞᕠᕤᕦᕢᕥᕧᕪᐌᐎᐒᐗᐐᐔᐙᐤᐦᐁᐦᐃᐦᐅᐦᐊᐦᐄᐦᐆᐦᐋᐦ"; // eastern, includes finals
+        public const string Inuktitut = "ᐁᐃᐄᐅᐆᐊᐋᐦᐯᐱᐲᐳᐴᐸᐹᑉᑌᑎᑏᑐᑑᑕᑖᑦᑫᑭᑮᑯᑰᑲᑳᒃᒉᒋᒌᒍᒎᒐᒑᒡᒣᒥᒦᒧᒨᒪᒫᒻᓀᓂᓃᓄᓅᓇᓈᓐᓭᓯᓰᓱᓲᓴᓵᔅᓓᓕᓖᓗᓘᓚᓛᓪᔦᔨᔩᔪᔫᔭᔮᔾᕓᕕᕖᕗᕘᕙᕚᕝᕃᕆᕇᕈᕉᕋᕌᕐᙯᕿᖀᖁᖂᖃᖄᖅᙰᖏᖐᖑᖒᖓᖔᖕᙱᙲᙳᙴᙵᙶᖖᖠᖡᖢᖣᖤᖥᖦ"; //includes long vowels & finals
+        public const string Cherokee = "ᎠᎡᎢᎣᎤᎥᎦᎧᎨᎩᎪᎫᎬᎭᎮᎯᎰᎱᎲᎳᎴᎵᎶᎷᎸᎹᎺᎻᎼᎽᏵᎾᎿᏀᏁᏂᏃᏄᏅᏆᏇᏈᏉᏊᏋᏍᏌᏎᏏᏐᏑᏒᏓᏔᏕᏖᏗᏘᏙᏚᏛᏜᏝᏞᏟᏠᏡᏢᏣᏤᏥᏦᏧᏨᏩᏪᏫᏬᏭᏮᏯᏰᏱᏲᏳᏴ"; // no capital/lowercase differentiation
+        public const string GreekNoCaps = "αβγδεζηθικλμνξοπρστυφχψω";
+        public const string GreekCaps = "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω";
+        public const string Mandaic = "ࡀࡁࡂࡃࡄࡅࡆࡇࡈࡉࡊࡋࡌࡎࡏࡐࡑࡒࡓࡔࡕࡖ"; // the final ࡀ is not included here so that it doesn't have a larger chance of being included, despite its position in the alphabet
+        public const string Vai = "ꔀꔤꕉꕱꖕꖺꗡꔁꔥꕊꕲꖖꖻꗢꕋꖼꗣꔂꔦꕌꕳꖗꖽꗤꔧꕍꖘꖾꗥꔃꔨꕎꕴꖙꖿꗦꔄꔩꕏꕵꖚꗀꗧꔅꔪꕐꕶꖛꗁꗨꔆꔫꕑꕷꖜꗂꗩꔇꔬꕒꕸꖝꗃꗪꔈꔭꕓꕹꖞꗄꗫꔉꔮꕔꕺꖟꗅꗬꕕꗭꔊꔯꕖꕻꖠꗆꗮꔋꔰꕗꕼꖡꗇꗯꗈꗰꔌꔱꕘꕽꖢꗉꗱꔍꔲꕙꕾꖣꗊꗲꔎꔳꕚꕿꖤꗋꗳꔏꔴꕛꖀꖥꗌꗴꔐꔵꕜꖁꖦꗍꗵꔑꔶꕝꖂꖧꗎꗶꔒꔷꕞꖃꖨꗏꗷꔓꔸꕟꖄꖩꗐꗸꔔꔹꕠꖅꖪꗑꗹꔕꔺꕡꖆꖫꗒꗺꔖꔻꕢꖇꖬꗓꗻꔗꔼꕣꖈꖭꗔꗼꔘꔽꕤꖉꖮꗕꗽꔙꔾꕥꖊꖯꗖꗾꔚꔿꕦꖋꖰꗗꗿꔛꕀꕧꖌꖱꗘꘀꔜꕁꕨꖍꖲꗙꘁꔝꕂꕩꖎꖳꗚꘂꔞꕃꕪꖏꖴꗛꘃꕫꔟꕄꕬꖐꖵꗜꘄꘅꔠꕅꕭꖑꖶꗝꘆꘇꔡꕆꕮꖒꖷꗞꘈꔢꕇꕯꖓꖸꗟꘉꔣꕈꕰꖔꖹꗠꘊ";
+        // Perso-Arabic, Hebrew, Tamil, Thai, and Khmer forthcoming
+        public static string[] GetAll()
+        {
+            return new string[]
+            {
+                LatinNoCaps,
+                LatinCaps,
+                CyrillicNoCaps,
+                CyrillicCaps,
+                Arabic,
+                Devanagari,
+                JapaneseHiragana,
+                JapaneseKatakana,
+                JapaneseKana,
+                Syriac,
+                ArmenianNoCaps,
+                ArmenianCaps,
+                GeorgianModern,
+                Geez,
+                Cree,
+                Inuktitut,
+                Cherokee,
+                GreekNoCaps,
+                GreekCaps,
+                Mandaic,
+                Vai
+            };
         }
     }
 }

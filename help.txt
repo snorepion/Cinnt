@@ -36,20 +36,11 @@ Undo | Ctrl+Q
 	Reverts text to the previous version before performing the action. This is not the same as the regular textbox undo Ctrl+Z, which only reverts your manual changes.
 	This does NOT work on text that has had encryption applied for security reasons (it's not safe to continue storing unencrypted sensitive data in RAM).
 
-ENCRYPTION MENU
+DATA MENU
 ---------------
-Encrypt <special> <string>
-	Encrypts a text with one of three chosen symmetric algorithms: AES, DES, and RC2. These are in arguments as aes, des, and rc2 respectively. The string is used for the key.
-	
-Decrypt <special> <string>
-	See above. Decrypts text.
-	
 Hash <special>
 	Computes the hash of your text using one of three popular hash types: SHA256, SHA512, and MD5. These are in arguments as sha256, sha512, and md5 respectively. 
 	The hash is copied to your clipboard, but it will warn you if there is text currently on it.
-	
-Generate Key
-	Generates a true random 256-bit key that you can use to encrypt data. This is copied to your clipboard, and you should remove it immediately after writing it down.
 	
 Convert <special> <special>
 	Converts a piece of data between human-readable and two levels of machine-readable. Use ascii for text, hex for hexadecimal, and bin for binary.

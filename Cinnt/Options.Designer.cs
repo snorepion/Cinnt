@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.genTp = new System.Windows.Forms.TabPage();
+            this.alphabetCb = new System.Windows.Forms.ComboBox();
+            this.alphTb = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.maxLetterNud = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.wordWrapCb = new System.Windows.Forms.CheckBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,13 +46,10 @@
             this.uiFntBtn = new System.Windows.Forms.Button();
             this.modBtn = new System.Windows.Forms.Button();
             this.colorSelectLb = new System.Windows.Forms.ListBox();
-            this.wordWrapCb = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.maxLetterNud = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.genTp.SuspendLayout();
-            this.persTp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxLetterNud)).BeginInit();
+            this.persTp.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -61,6 +64,9 @@
             // 
             // genTp
             // 
+            this.genTp.Controls.Add(this.alphabetCb);
+            this.genTp.Controls.Add(this.alphTb);
+            this.genTp.Controls.Add(this.label3);
             this.genTp.Controls.Add(this.maxLetterNud);
             this.genTp.Controls.Add(this.label2);
             this.genTp.Controls.Add(this.wordWrapCb);
@@ -74,6 +80,93 @@
             this.genTp.TabIndex = 0;
             this.genTp.Text = "General";
             this.genTp.UseVisualStyleBackColor = true;
+            // 
+            // alphabetCb
+            // 
+            this.alphabetCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.alphabetCb.FormattingEnabled = true;
+            this.alphabetCb.Items.AddRange(new object[] {
+            "26-letter Latin",
+            "26-letter Latin (with capitals)",
+            "Russian Cyrillic",
+            "Russian Cyrillic (with capitals)",
+            "Arabic (Standard)",
+            "Devanagari",
+            "Japanese (hiragana)",
+            "Japanese (katakana)",
+            "Japanese (hiragana+katakana)",
+            "Syriac",
+            "Armenian",
+            "Armenian (with capitals)",
+            "Georgian (mkhedruli)",
+            "Ge\'ez",
+            "Cree",
+            "Inuktitut",
+            "Cherokee",
+            "Greek",
+            "Greek (with capitals)",
+            "Mandaic",
+            "Vai"});
+            this.alphabetCb.Location = new System.Drawing.Point(280, 183);
+            this.alphabetCb.Name = "alphabetCb";
+            this.alphabetCb.Size = new System.Drawing.Size(178, 28);
+            this.alphabetCb.TabIndex = 8;
+            this.alphabetCb.SelectedIndexChanged += new System.EventHandler(this.alphabetCb_SelectedIndexChanged);
+            // 
+            // alphTb
+            // 
+            this.alphTb.Location = new System.Drawing.Point(84, 128);
+            this.alphTb.Multiline = true;
+            this.alphTb.Name = "alphTb";
+            this.alphTb.Size = new System.Drawing.Size(374, 49);
+            this.alphTb.TabIndex = 7;
+            this.alphTb.Text = global::Cinnt.Properties.Settings.Default.Alphabet;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 131);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Alphabet";
+            // 
+            // maxLetterNud
+            // 
+            this.maxLetterNud.Location = new System.Drawing.Point(148, 95);
+            this.maxLetterNud.Maximum = new decimal(new int[] {
+            5242880,
+            0,
+            0,
+            0});
+            this.maxLetterNud.Name = "maxLetterNud";
+            this.maxLetterNud.Size = new System.Drawing.Size(122, 27);
+            this.maxLetterNud.TabIndex = 5;
+            this.maxLetterNud.Value = new decimal(new int[] {
+            5242880,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Max letters (/1024)";
+            // 
+            // wordWrapCb
+            // 
+            this.wordWrapCb.AutoSize = true;
+            this.wordWrapCb.Checked = global::Cinnt.Properties.Settings.Default.WordWrap;
+            this.wordWrapCb.Location = new System.Drawing.Point(9, 70);
+            this.wordWrapCb.Name = "wordWrapCb";
+            this.wordWrapCb.Size = new System.Drawing.Size(104, 24);
+            this.wordWrapCb.TabIndex = 3;
+            this.wordWrapCb.Text = "Word wrap";
+            this.wordWrapCb.UseVisualStyleBackColor = true;
             // 
             // linkLabel2
             // 
@@ -188,45 +281,6 @@
             this.colorSelectLb.Size = new System.Drawing.Size(381, 204);
             this.colorSelectLb.TabIndex = 0;
             // 
-            // wordWrapCb
-            // 
-            this.wordWrapCb.AutoSize = true;
-            this.wordWrapCb.Location = new System.Drawing.Point(9, 70);
-            this.wordWrapCb.Name = "wordWrapCb";
-            this.wordWrapCb.Size = new System.Drawing.Size(104, 24);
-            this.wordWrapCb.TabIndex = 3;
-            this.wordWrapCb.Text = "Word wrap";
-            this.wordWrapCb.Checked = Properties.Settings.Default.WordWrap;
-            this.wordWrapCb.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Max letters (/1024)";
-            // 
-            // maxLetterNud
-            // 
-            this.maxLetterNud.Location = new System.Drawing.Point(148, 95);
-            this.maxLetterNud.Maximum = new decimal(new int[] {
-            5242880,
-            0,
-            0,
-            0});
-            this.maxLetterNud.Name = "maxLetterNud";
-            this.maxLetterNud.Size = new System.Drawing.Size(122, 27);
-            this.maxLetterNud.TabIndex = 5;
-            this.maxLetterNud.Value = new decimal(new int[]
-            {
-                Properties.Settings.Default.MaximumRand,
-                0,
-                0,
-                0
-            });
-            // 
             // Options
             // 
             this.AcceptButton = this.modBtn;
@@ -242,8 +296,8 @@
             this.tabControl1.ResumeLayout(false);
             this.genTp.ResumeLayout(false);
             this.genTp.PerformLayout();
-            this.persTp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.maxLetterNud)).EndInit();
+            this.persTp.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -264,5 +318,8 @@
         private System.Windows.Forms.NumericUpDown maxLetterNud;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox wordWrapCb;
+        private System.Windows.Forms.ComboBox alphabetCb;
+        private System.Windows.Forms.TextBox alphTb;
+        private System.Windows.Forms.Label label3;
     }
 }

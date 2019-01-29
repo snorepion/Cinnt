@@ -41,5 +41,8 @@
     <Setting Name="WordWrap" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Alphabet" Type="System.String" Scope="User">
+      <Value Profile="(Default)">abcdefghijklmnopqrstuvwxyz</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

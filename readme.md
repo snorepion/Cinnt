@@ -4,6 +4,12 @@ An array of string manipulation tools as well as a character picker.
 
 The Cinnt full logo uses [Raleway](https://github.com/theleagueof/raleway), released under the Open Font License. You may modify and use the logo without any restrictions - the SVG source is included in the source code.
 
+Libraries used:
+
+- UnicodeInformation by Fabien Barbier
+
+- BouncyCastle for C# by The Legion of the Bouncy Castle, Inc.
+
 Features:
 
 - Covfefeize (Example: coverage -> covfefe)

@@ -9,7 +9,7 @@ Additional settings:
 	
 Additional features:
 
-- Several symmetric encryption algorithms available, as well as three popular methods of hash generation
+- Hash generation
 
 - Redesigned UI (again)
 

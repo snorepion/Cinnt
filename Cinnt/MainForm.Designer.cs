@@ -49,11 +49,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.encryptionConversionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.encryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hashToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generateKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.convertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.randomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.covfefeizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -237,52 +233,23 @@
             // encryptionConversionToolStripMenuItem
             // 
             this.encryptionConversionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.encryptToolStripMenuItem,
-            this.decryptToolStripMenuItem,
             this.hashToolStripMenuItem,
-            this.generateKeyToolStripMenuItem,
-            this.toolStripSeparator3,
             this.convertToolStripMenuItem});
             this.encryptionConversionToolStripMenuItem.Name = "encryptionConversionToolStripMenuItem";
-            this.encryptionConversionToolStripMenuItem.Size = new System.Drawing.Size(178, 24);
-            this.encryptionConversionToolStripMenuItem.Text = "Encryption / Conversion";
-            // 
-            // encryptToolStripMenuItem
-            // 
-            this.encryptToolStripMenuItem.Name = "encryptToolStripMenuItem";
-            this.encryptToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
-            this.encryptToolStripMenuItem.Text = "Encrypt";
-            this.encryptToolStripMenuItem.Click += new System.EventHandler(this.Encrypt);
-            // 
-            // decryptToolStripMenuItem
-            // 
-            this.decryptToolStripMenuItem.Name = "decryptToolStripMenuItem";
-            this.decryptToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
-            this.decryptToolStripMenuItem.Text = "Decrypt";
-            this.decryptToolStripMenuItem.Click += new System.EventHandler(this.Decrypt);
+            this.encryptionConversionToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.encryptionConversionToolStripMenuItem.Text = "Data";
             // 
             // hashToolStripMenuItem
             // 
             this.hashToolStripMenuItem.Name = "hashToolStripMenuItem";
-            this.hashToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.hashToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.hashToolStripMenuItem.Text = "Hash";
-            // 
-            // generateKeyToolStripMenuItem
-            // 
-            this.generateKeyToolStripMenuItem.Name = "generateKeyToolStripMenuItem";
-            this.generateKeyToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
-            this.generateKeyToolStripMenuItem.Text = "Generate Key";
-            this.generateKeyToolStripMenuItem.Click += new System.EventHandler(this.CreateKey);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(169, 6);
+            this.hashToolStripMenuItem.Click += new System.EventHandler(this.Hash);
             // 
             // convertToolStripMenuItem
             // 
             this.convertToolStripMenuItem.Name = "convertToolStripMenuItem";
-            this.convertToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.convertToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.convertToolStripMenuItem.Text = "Convert";
             this.convertToolStripMenuItem.Click += new System.EventHandler(this.Format);
             // 
@@ -353,21 +320,21 @@
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.fontToolStripMenuItem.Text = "Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.FontChange);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.Options);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.About);
             // 
@@ -502,7 +469,6 @@
         private System.Windows.Forms.ToolStripMenuItem subtractToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem encryptionConversionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem encryptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hashToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem convertToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeLettersToolStripMenuItem;
@@ -528,11 +494,8 @@
         private System.Windows.Forms.ToolStripStatusLabel parCntLbl;
         private System.Windows.Forms.StatusStrip statStrip;
         private System.Windows.Forms.TextBox argsTb;
-        private System.Windows.Forms.ToolStripMenuItem generateKeyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem changeCaseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem decryptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem specialCharactersToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.Panel panel1;
