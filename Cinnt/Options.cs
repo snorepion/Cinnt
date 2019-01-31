@@ -1,5 +1,8 @@
 ﻿using Cinnt.Properties;
 using System;
+using System.Configuration;
+using System.Linq;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
@@ -77,6 +80,10 @@ namespace Cinnt
             Settings.Default.WordWrap = wordWrapCb.Checked;
             Settings.Default.Alphabet = alphTb.Text;
             Settings.Default.Save();
+        }
+        private void localizSelBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sorry, this feature has not yet been implemented.");
         }
     }
     static class WritingSystems

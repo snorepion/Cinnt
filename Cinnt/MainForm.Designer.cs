@@ -77,6 +77,7 @@
             this.statStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            
             // 
             // mainTb
             // 
@@ -145,20 +146,20 @@
             this.undoToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.EditMenu;
             // 
             // findToolStripMenuItem
             // 
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
             this.findToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.findToolStripMenuItem.Text = "&Find";
+            this.findToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.FindMenuItem;
             this.findToolStripMenuItem.Click += new System.EventHandler(this.Find);
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
             this.replaceToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.replaceToolStripMenuItem.Text = "Replace";
+            this.replaceToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.ReplaceMenuItem;
             this.replaceToolStripMenuItem.Click += new System.EventHandler(this.Replace);
             // 
             // toolStripSeparator1
@@ -170,28 +171,28 @@
             // 
             this.isolateToolStripMenuItem.Name = "isolateToolStripMenuItem";
             this.isolateToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.isolateToolStripMenuItem.Text = "&Isolate";
+            this.isolateToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.IsolateMenuItem;
             this.isolateToolStripMenuItem.Click += new System.EventHandler(this.Isolate);
             // 
             // subtractToolStripMenuItem
             // 
             this.subtractToolStripMenuItem.Name = "subtractToolStripMenuItem";
             this.subtractToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.subtractToolStripMenuItem.Text = "Sub&tract";
+            this.subtractToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.SubtractMenuItem;
             this.subtractToolStripMenuItem.Click += new System.EventHandler(this.Subtract);
             // 
             // insertToolStripMenuItem
             // 
             this.insertToolStripMenuItem.Name = "insertToolStripMenuItem";
             this.insertToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.insertToolStripMenuItem.Text = "Inse&rt";
+            this.insertToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.InsertMenuItem;
             this.insertToolStripMenuItem.Click += new System.EventHandler(this.Insert);
             // 
             // removeLettersToolStripMenuItem
             // 
             this.removeLettersToolStripMenuItem.Name = "removeLettersToolStripMenuItem";
             this.removeLettersToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.removeLettersToolStripMenuItem.Text = "Remove letters";
+            this.removeLettersToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.RemoveLettersMenuItem;
             this.removeLettersToolStripMenuItem.Click += new System.EventHandler(this.RemoveLetters);
             // 
             // toolStripSeparator4
@@ -203,7 +204,7 @@
             // 
             this.changeCaseToolStripMenuItem.Name = "changeCaseToolStripMenuItem";
             this.changeCaseToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.changeCaseToolStripMenuItem.Text = "Change case";
+            this.changeCaseToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.ChangeCaseMenuItem;
             this.changeCaseToolStripMenuItem.Click += new System.EventHandler(this.CaseCtrl);
             // 
             // toolStripSeparator2
@@ -215,7 +216,7 @@
             // 
             this.specialCharactersToolStripMenuItem.Name = "specialCharactersToolStripMenuItem";
             this.specialCharactersToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.specialCharactersToolStripMenuItem.Text = "S&pecial characters";
+            this.specialCharactersToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.SpecialCharactersMenuItem;
             this.specialCharactersToolStripMenuItem.Click += new System.EventHandler(this.UnicodeInsert);
             // 
             // toolStripSeparator5
@@ -227,7 +228,7 @@
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.UndoMenuItem;
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.Revert);
             // 
             // encryptionConversionToolStripMenuItem
@@ -237,19 +238,19 @@
             this.convertToolStripMenuItem});
             this.encryptionConversionToolStripMenuItem.Name = "encryptionConversionToolStripMenuItem";
             this.encryptionConversionToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
-            this.encryptionConversionToolStripMenuItem.Text = "Data";
+            this.encryptionConversionToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.DataMenu;
             // 
             // hashToolStripMenuItem
             // 
             this.hashToolStripMenuItem.Name = "hashToolStripMenuItem";
-            this.hashToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.hashToolStripMenuItem.Text = "Hash";
+            this.hashToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.hashToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.HashMenuItem;
             this.hashToolStripMenuItem.Click += new System.EventHandler(this.Hash);
             // 
             // convertToolStripMenuItem
             // 
             this.convertToolStripMenuItem.Name = "convertToolStripMenuItem";
-            this.convertToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.convertToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.convertToolStripMenuItem.Text = "Convert";
             this.convertToolStripMenuItem.Click += new System.EventHandler(this.Format);
             // 
@@ -266,14 +267,14 @@
             // 
             this.covfefeizeToolStripMenuItem.Name = "covfefeizeToolStripMenuItem";
             this.covfefeizeToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
-            this.covfefeizeToolStripMenuItem.Text = "C&ovfefeize";
+            this.covfefeizeToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.CovfefeizeMenuItem;
             this.covfefeizeToolStripMenuItem.Click += new System.EventHandler(this.Covfefe);
             // 
             // addRandomLettersToolStripMenuItem
             // 
             this.addRandomLettersToolStripMenuItem.Name = "addRandomLettersToolStripMenuItem";
             this.addRandomLettersToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
-            this.addRandomLettersToolStripMenuItem.Text = "Add random letters";
+            this.addRandomLettersToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.AddRandomLettrMenuItem;
             this.addRandomLettersToolStripMenuItem.Click += new System.EventHandler(this.Add);
             // 
             // sortationToolStripMenuItem
@@ -284,27 +285,27 @@
             this.reverseToolStripMenuItem});
             this.sortationToolStripMenuItem.Name = "sortationToolStripMenuItem";
             this.sortationToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
-            this.sortationToolStripMenuItem.Text = "Sortation";
+            this.sortationToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.SortationMenu;
             // 
             // sortToolStripMenuItem
             // 
             this.sortToolStripMenuItem.Name = "sortToolStripMenuItem";
             this.sortToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
-            this.sortToolStripMenuItem.Text = "&Sort";
+            this.sortToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.SortMenuItem;
             this.sortToolStripMenuItem.Click += new System.EventHandler(this.Sort);
             // 
             // shuffleToolStripMenuItem
             // 
             this.shuffleToolStripMenuItem.Name = "shuffleToolStripMenuItem";
             this.shuffleToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
-            this.shuffleToolStripMenuItem.Text = "Shuff&le";
+            this.shuffleToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.ShuffleMenuItem;
             this.shuffleToolStripMenuItem.Click += new System.EventHandler(this.Shuffle);
             // 
             // reverseToolStripMenuItem
             // 
             this.reverseToolStripMenuItem.Name = "reverseToolStripMenuItem";
             this.reverseToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
-            this.reverseToolStripMenuItem.Text = "Reverse";
+            this.reverseToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.ReverseMenuItem;
             this.reverseToolStripMenuItem.Click += new System.EventHandler(this.Reverse);
             // 
             // windowToolStripMenuItem
@@ -315,27 +316,27 @@
             this.aboutToolStripMenuItem});
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
             this.windowToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
-            this.windowToolStripMenuItem.Text = "Settings";
+            this.windowToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.SettingsMenu;
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.fontToolStripMenuItem.Text = "Font";
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.fontToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.FontMenuItem;
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.FontChange);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.optionsToolStripMenuItem.Text = "Options";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.optionsToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.OptionsMenuItem;
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.Options);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.aboutToolStripMenuItem.Text = global::Cinnt.Properties.Language.Default.AboutMenuItem;
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.About);
             // 
             // tsMsgReporterLbl
@@ -440,7 +441,7 @@
             this.MainMenuStrip = this.mainMenu;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "Cinnt";
+            this.Text = global::Cinnt.Properties.Language.Default.Title;
             this.Load += new System.EventHandler(this.FrmLoad);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.tbContainer2.ResumeLayout(false);

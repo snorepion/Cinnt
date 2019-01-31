@@ -117,6 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="language1.SettingsAlphabetSelectDropdownBox" xml:space="preserve">
+    <value>26-letter Latin
+26-letter Latin (with capitals)
+Russian Cyrillic
+Russian Cyrillic (with capitals)
+Arabic (Standard)
+Devanagari
+Japanese (hiragana)
+Japanese (katakana)
+Japanese (hiragana+katakana)
+Syriac
+Armenian
+Armenian (with capitals)
+Georgian (mkhedruli)
+Ge'ez
+Cree
+Inuktitut
+Cherokee
+Greek
+Greek (with capitals)
+Mandaic
+Vai</value>
+  </data>
+  <data name="language1.SettingsPersonalizationText" xml:space="preserve">
+    <value>Textbox background
+Textbox foreground
+Inactive button background
+Selected button background
+Active button background
+Button text color
+Window background
+Find and replace match color
+Status strip background</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

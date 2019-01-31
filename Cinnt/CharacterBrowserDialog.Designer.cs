@@ -1,4 +1,5 @@
-﻿namespace Cinnt
+﻿using Cinnt.Properties;
+namespace Cinnt
 {
     partial class CharacterBrowserDialog
     {
@@ -41,7 +42,7 @@
             this.okBtn.Name = "okBtn";
             this.okBtn.Size = new System.Drawing.Size(75, 38);
             this.okBtn.TabIndex = 0;
-            this.okBtn.Text = "OK";
+            this.okBtn.Text = Language.Default.Ok;
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
@@ -73,7 +74,7 @@
             this.fontBtn.Name = "fontBtn";
             this.fontBtn.Size = new System.Drawing.Size(103, 38);
             this.fontBtn.TabIndex = 4;
-            this.fontBtn.Text = "Change Font";
+            this.fontBtn.Text = Language.Default.CharBrowseChangeFont;
             this.fontBtn.UseVisualStyleBackColor = true;
             this.fontBtn.Click += new System.EventHandler(this.fontBtn_Click);
             // 
@@ -380,7 +381,7 @@
             this.Controls.Add(this.okBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CharacterBrowserDialog";
-            this.Text = "Cinnt - Add Special Characters";
+            this.Text = Language.Default.Title;
             this.ResumeLayout(false);
             this.PerformLayout();
 
