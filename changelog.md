@@ -6,6 +6,8 @@ Additional settings:
 - Maximum number of random letters to generate
 
 - Alphabet bank for generating letters
+
+- British vs American English
 	
 Additional features:
 
@@ -21,6 +23,16 @@ Additional features:
 
 - Unicode character picker (implementing Fabien Barbier's UnicodeInformation .NET library - see https://github.com/GoldenCrystal/NetUnicodeInfo)
 	
+- Localization support
+
+- Apply functions to selection rather than all text
+
+- IO
+
+- Text styling
+
+- IPA entry
+
 Removed features:
 
 - Garble (useless)
@@ -38,6 +50,8 @@ Minor changes:
 - Organized code
 
 - Allow specific indexing for letter removal
+
+- Upgraded to .NET 4.7 from 4.5.2
 
 0.4.0.2
 ======

@@ -8,8 +8,6 @@ Libraries used:
 
 - UnicodeInformation by Fabien Barbier
 
-- BouncyCastle for C# by The Legion of the Bouncy Castle, Inc.
-
 Features:
 
 - Covfefeize (Example: coverage -> covfefe)
@@ -40,4 +38,4 @@ Features:
 
 - Regex find/replace
 
-[Here are some screenshots.](https://imgur.com/a/IQRG1)
+If you're interested in helping to translate the program, please use [Zeta Resource Editor](https://www.zeta-resource-editor.com/index.html). 

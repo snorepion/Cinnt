@@ -30,7 +30,6 @@ namespace Cinnt
         /// </summary>
         private void InitializeComponent()
         {
-            Cinnt.Properties.Language language1 = new Cinnt.Properties.Language();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.genTp = new System.Windows.Forms.TabPage();
@@ -85,7 +84,7 @@ namespace Cinnt
             this.genTp.Padding = new System.Windows.Forms.Padding(3);
             this.genTp.Size = new System.Drawing.Size(469, 220);
             this.genTp.TabIndex = 0;
-            this.genTp.Text = language1.SettingsGeneralTab;
+            this.genTp.Text = global::Cinnt.Properties.Language.SettingsGeneralTab;
             this.genTp.UseVisualStyleBackColor = true;
             // 
             // localizSelBtn
@@ -94,64 +93,7 @@ namespace Cinnt
             this.localizSelBtn.Name = "localizSelBtn";
             this.localizSelBtn.Size = new System.Drawing.Size(143, 28);
             this.localizSelBtn.TabIndex = 10;
-            language1._LanguageCode = "EN_US";
-            language1.AboutMenuItem = "About";
-            language1.AddRandomLettrMenuItem = "Add random letters";
-            language1.ArgAscii = "ascii";
-            language1.ArgBinary = "bin";
-            language1.ArgCaseCapital = "caps";
-            language1.ArgCaseLower = "lower";
-            language1.ArgCaseRevSentence = "-sentence";
-            language1.ArgCaseSentence = "sentence";
-            language1.ArgHexadecimal = "hex";
-            language1.ArgMd5Hash = "md5";
-            language1.ArgSha256Hash = "sha256";
-            language1.ArgSha512Hash = "sha512";
-            language1.ChangeCaseMenuItem = "Change case";
-            language1.CharBrowseChangeFont = "Change Font";
-            language1.ConvertMenuItem = "Convert";
-            language1.CovfefeizeConsonants = "bcdfghjklmnpqrstvwxyz";
-            language1.CovfefeizeMenuItem = "C&ovfefeize";
-            language1.CovfefeizeVowels = "aeiou";
-            language1.DataMenu = "Data";
-            language1.EditMenu = "Edit";
-            language1.FindMenuItem = "&Find";
-            language1.FontMenuItem = "Font";
-            language1.HashMenuItem = "Hash";
-            language1.InsertMenuItem = "Inse&rt";
-            language1.IsolateMenuItem = "&Isolate";
-            language1.Ok = "OK";
-            language1.OptionsMenuItem = "Options";
-            language1.RandomMenuItem = "Random";
-            language1.RemoveLettersMenuItem = "Remove letters";
-            language1.ReplaceMenuItem = "Replace";
-            language1.ReverseMenuItem = "Reverse";
-            language1.SettingsAlphabet = "Alphabet";
-            language1.SettingsAlphabetSelectDropdownBox = resources.GetString("language1.SettingsAlphabetSelectDropdownBox");
-            language1.SettingsApply = "Apply";
-            language1.SettingsChangeUIFont = "Change UI Font";
-            language1.SettingsGeneralTab = "General";
-            language1.SettingsGithubLabel = "Github";
-            language1.SettingsKey = "";
-            language1.SettingsLocalizationLabel = "Localization: ";
-            language1.SettingsLocalizationSelect = "Select";
-            language1.SettingsMaxLetters = "Max letters (/1024)";
-            language1.SettingsMenu = "Settings";
-            language1.SettingsModify = "Modify";
-            language1.SettingsPersonalizationText = resources.GetString("language1.SettingsPersonalizationText");
-            language1.SettingsPersonalTab = "Personalization";
-            language1.SettingsReportIssueLabel = "Report an issue";
-            language1.SettingsReset = "Reset";
-            language1.SettingsVersionLabel = "Version: Cinnt v";
-            language1.SettingsWordWrapCheckBox = "Word wrap";
-            language1.ShuffleMenuItem = "Shuff&le";
-            language1.SortationMenu = "Sortation";
-            language1.SortMenuItem = "&Sort";
-            language1.SpecialCharactersMenuItem = "S&pecial characters";
-            language1.SubtractMenuItem = "Sub&tract";
-            language1.Title = "Cinnt";
-            language1.UndoMenuItem = "Undo";
-            this.localizSelBtn.Text = language1.SettingsLocalizationSelect;
+            this.localizSelBtn.Text = global::Cinnt.Properties.Language.SettingsLocalizationSelect;
             this.localizSelBtn.UseVisualStyleBackColor = true;
             this.localizSelBtn.Click += new System.EventHandler(this.localizSelBtn_Click);
             // 
@@ -160,9 +102,9 @@ namespace Cinnt
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(170, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 20);
+            this.label4.Size = new System.Drawing.Size(92, 20);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Localization: EN_US";
+            this.label4.Text = "Localization:";
             // 
             // alphabetCb
             // 
@@ -212,7 +154,7 @@ namespace Cinnt
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = language1.SettingsAlphabet;
+            this.label3.Text = "Alphabet";
             // 
             // maxLetterNud
             // 
@@ -238,7 +180,7 @@ namespace Cinnt
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 4;
-            this.label2.Text = language1.SettingsMaxLetters;
+            this.label2.Text = "Max letters (/1024)";
             // 
             // wordWrapCb
             // 
@@ -247,7 +189,7 @@ namespace Cinnt
             this.wordWrapCb.Name = "wordWrapCb";
             this.wordWrapCb.Size = new System.Drawing.Size(104, 24);
             this.wordWrapCb.TabIndex = 3;
-            this.wordWrapCb.Text = language1.SettingsWordWrapCheckBox;
+            this.wordWrapCb.Text = global::Cinnt.Properties.Language.SettingsWordWrapCheckBox;
             this.wordWrapCb.UseVisualStyleBackColor = true;
             // 
             // linkLabel2
@@ -261,7 +203,7 @@ namespace Cinnt
             this.linkLabel2.Size = new System.Drawing.Size(53, 20);
             this.linkLabel2.TabIndex = 2;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = language1.SettingsGithubLabel;
+            this.linkLabel2.Text = "Github";
             this.linkLabel2.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
@@ -276,7 +218,7 @@ namespace Cinnt
             this.linkLabel1.Size = new System.Drawing.Size(110, 20);
             this.linkLabel1.TabIndex = 1;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = language1.SettingsReportIssueLabel;
+            this.linkLabel1.Text = "Report an issue";
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
@@ -301,7 +243,7 @@ namespace Cinnt
             this.persTp.Padding = new System.Windows.Forms.Padding(3);
             this.persTp.Size = new System.Drawing.Size(469, 220);
             this.persTp.TabIndex = 1;
-            this.persTp.Text = language1.SettingsPersonalTab;
+            this.persTp.Text = global::Cinnt.Properties.Language.SettingsPersonalTab;
             this.persTp.UseVisualStyleBackColor = true;
             // 
             // applyBtn
@@ -310,7 +252,7 @@ namespace Cinnt
             this.applyBtn.Name = "applyBtn";
             this.applyBtn.Size = new System.Drawing.Size(72, 43);
             this.applyBtn.TabIndex = 4;
-            this.applyBtn.Text = language1.SettingsApply;
+            this.applyBtn.Text = global::Cinnt.Properties.Language.SettingsApply;
             this.applyBtn.UseVisualStyleBackColor = true;
             this.applyBtn.Click += new System.EventHandler(this.applyBtn_Click);
             // 
@@ -320,7 +262,7 @@ namespace Cinnt
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(72, 41);
             this.resetBtn.TabIndex = 3;
-            this.resetBtn.Text = language1.SettingsReset;
+            this.resetBtn.Text = global::Cinnt.Properties.Language.SettingsReset;
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
@@ -330,7 +272,7 @@ namespace Cinnt
             this.uiFntBtn.Name = "uiFntBtn";
             this.uiFntBtn.Size = new System.Drawing.Size(72, 53);
             this.uiFntBtn.TabIndex = 2;
-            this.uiFntBtn.Text = language1.SettingsChangeUIFont;
+            this.uiFntBtn.Text = global::Cinnt.Properties.Language.SettingsChangeUIFont;
             this.uiFntBtn.UseVisualStyleBackColor = true;
             this.uiFntBtn.Click += new System.EventHandler(this.uiFntBtn_Click);
             // 
@@ -340,7 +282,7 @@ namespace Cinnt
             this.modBtn.Name = "modBtn";
             this.modBtn.Size = new System.Drawing.Size(72, 49);
             this.modBtn.TabIndex = 1;
-            this.modBtn.Text = language1.SettingsModify;
+            this.modBtn.Text = global::Cinnt.Properties.Language.SettingsModify;
             this.modBtn.UseVisualStyleBackColor = true;
             this.modBtn.Click += new System.EventHandler(this.modBtn_Click);
             // 

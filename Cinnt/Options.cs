@@ -1,11 +1,14 @@
 ﻿using Cinnt.Properties;
 using System;
 using System.Configuration;
+using System.Configuration.Assemblies;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Resources;
+using System.IO;
 
 namespace Cinnt
 {
@@ -83,7 +86,15 @@ namespace Cinnt
         }
         private void localizSelBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Sorry, this feature has not yet been implemented.");
+            string loc = System.Reflection.Assembly.GetEntryAssembly().Location + "/local/";
+            using (LocalizationSelector l = new LocalizationSelector(loc))
+            {
+                if (l.ShowDialog() == DialogResult.OK)
+                {
+                    Settings.Default.Culture = l.ChosenCulture;
+                    Settings.Default.Save();
+                }
+            }
         }
     }
     static class WritingSystems

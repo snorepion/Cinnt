@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="AboutMenuItem" xml:space="preserve">
+    <value>ცინტის შესახებ</value>
+  </data>
+	<data name="AddRandomLettersMenuItem" xml:space="preserve">
+    <value>ასოები დაემატა შემთხვევით</value>
+  </data>
+	<data name="ArgAscii" xml:space="preserve">
+    <value>ასციი</value>
+  </data>
+	<data name="ArgBinary" xml:space="preserve">
+    <value>ორო</value>
+    <comment>(ორობითი)</comment>
+  </data>
+	<data name="ArgCaseCapital" xml:space="preserve">
+    <value>~</value>
+    <comment>დიდი ასოები არ აქვს ქართულად</comment>
+  </data>
+	<data name="ArgCaseLower" xml:space="preserve">
+    <value>~</value>
+    <comment>^</comment>
+  </data>
+	<data name="ArgCaseRevSentence" xml:space="preserve">
+    <value>~</value>
+    <comment>^</comment>
+  </data>
+	<data name="ArgCaseSentence" xml:space="preserve">
+    <value>~</value>
+    <comment>^</comment>
+  </data>
+	<data name="ArgHexadecimal" xml:space="preserve">
+    <value>თექვს</value>
+  </data>
+	<data name="ArgMd5Hash" xml:space="preserve">
+    <value>მდ5</value>
+  </data>
+	<data name="ArgSha256Hash" xml:space="preserve">
+    <value>სჰა256</value>
+  </data>
+	<data name="ArgSha512Hash" xml:space="preserve">
+    <value>სჰა512</value>
+  </data>
+	<data name="ChangeCaseMenuItem" xml:space="preserve">
+    <value>(ეს დეფუნქტია)</value>
+  </data>
+	<data name="CharBrowseChangeFont" xml:space="preserve">
+    <value>შრიფტი</value>
+  </data>
+	<data name="ConvertMenuItem" xml:space="preserve">
+    <value>დააკონვერტიროთ</value>
+  </data>
+	<data name="CovfefeizeConsonants" xml:space="preserve">
+    <value>ბგდვზთლმნპჟრსტფქღყშჩცძწჭხჯჰ</value>
+    <comment>ახალი დამწერლობა</comment>
+  </data>
+	<data name="CovfefeizeMenuItem" xml:space="preserve">
+    <value>კ&amp;ოვფეფე</value>
+  </data>
+	<data name="CovfefeizeVowels" xml:space="preserve">
+    <value>აეიოუ</value>
+    <comment>ახალი დამწერლობა</comment>
+  </data>
+	<data name="DataMenu" xml:space="preserve">
+    <value>მონაცემი</value>
+  </data>
+	<data name="EditMenu" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+	<data name="FindMenuItem" xml:space="preserve">
+    <value>&amp;Find</value>
+  </data>
+	<data name="FontMenuItem" xml:space="preserve">
+    <value>შრიპტი</value>
+  </data>
+	<data name="HashMenuItem" xml:space="preserve">
+    <value>ჰაში</value>
+  </data>
+	<data name="InsertMenuItem" xml:space="preserve">
+    <value>Inse&amp;rt</value>
+  </data>
+	<data name="IsolateMenuItem" xml:space="preserve">
+    <value>&amp;Isolate</value>
+  </data>
+	<data name="LanguageName" xml:space="preserve">
+    <value>ქართული</value>
+    <comment>Georgian</comment>
+  </data>
+	<data name="Ok" xml:space="preserve">
+    <value>კი</value>
+  </data>
+	<data name="OptionsMenuItem" xml:space="preserve">
+    <value>Options</value>
+  </data>
+	<data name="RandomMenu" xml:space="preserve">
+    <value>შემთხვევითი</value>
+  </data>
+	<data name="RemoveLettersMenuItem" xml:space="preserve">
+    <value>წაშალე</value>
+  </data>
+	<data name="ReplaceMenuItem" xml:space="preserve">
+    <value>შეცვლი</value>
+  </data>
+	<data name="ReverseMenuItem" xml:space="preserve">
+    <value>გადაწერეთ</value>
+  </data>
+	<data name="SettingsAlphabet" xml:space="preserve">
+    <value>ანბანი</value>
+  </data>
+	<data name="SettingsAlphabetSelectDropdownBox" xml:space="preserve">
+    <value>ლათინ დამწერლობა
+ლათინ (დიდი ასოებით)
+კირილიცული (რუსული)
+კირილიცული (რუსული, დიდი ასოებით)
+არაბური
+დევანგაარი
+იაპონელი (ჰირაგანა)
+იაპონელი (კატაკანა)
+იაპონელი
+სირიული
+სომხური
+სომხური (დიდი ასოებით)
+ქართული (მხედრული)
+გეზი
+კრი
+ინუკტიტუტი
+ჩეროკი
+ბერძნული
+ბერძნული (დიდი ასოებით)
+მუნდიური
+ვაი</value>
+  </data>
+	<data name="SettingsApply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+	<data name="SettingsChangeUIFont" xml:space="preserve">
+    <value>უ.ი.-ის შრიპტი</value>
+  </data>
+	<data name="SettingsGeneralTab" xml:space="preserve">
+    <value>General</value>
+  </data>
+	<data name="SettingsGithubLabel" xml:space="preserve">
+    <value>გიტჰუბი</value>
+  </data>
+	<data name="SettingsLocalizationLabel" xml:space="preserve">
+    <value>ენა:</value>
+  </data>
+	<data name="SettingsLocalizationSelect" xml:space="preserve">
+    <value>Select</value>
+  </data>
+	<data name="SettingsMaxLetters" xml:space="preserve">
+    <value>მაქსი რაოდენობა</value>
+  </data>
+	<data name="SettingsMenu" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+	<data name="SettingsModify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+	<data name="SettingsPersonalizationText" xml:space="preserve">
+    <value>ტექსტის ფონის ფერი
+ტექსტის ფერი
+ღილის ფონის ფერი
+Selected button background
+Active button background
+Button text color
+Window background
+Find and replace match color
+Status strip background</value>
+  </data>
+	<data name="SettingsPersonalTab" xml:space="preserve">
+    <value>ფერები</value>
+  </data>
+	<data name="SettingsReportIssueLabel" xml:space="preserve">
+    <value>Report an issue</value>
+  </data>
+	<data name="SettingsReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+	<data name="SettingsVersionLabel" xml:space="preserve">
+    <value>ცინტი ვ</value>
+  </data>
+	<data name="SettingsWordWrapCheckBox" xml:space="preserve">
+    <value>Word wrap</value>
+  </data>
+	<data name="ShuffleMenuItem" xml:space="preserve">
+    <value>Shuff&amp;le</value>
+  </data>
+	<data name="SortationMenu" xml:space="preserve">
+    <value>შეკვეთა</value>
+  </data>
+	<data name="SortMenuItem" xml:space="preserve">
+    <value>შეუკვეთე</value>
+  </data>
+	<data name="SpecialCharactersMenuItem" xml:space="preserve">
+    <value>უნიკოდი</value>
+  </data>
+	<data name="SubtractMenuItem" xml:space="preserve">
+    <value>Sub&amp;tract</value>
+  </data>
+	<data name="Title" xml:space="preserve">
+    <value>ცინტი</value>
+  </data>
+	<data name="UndoMenuItem" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+	<data name="CanCovfefeize" xml:space="preserve">
+    <value>Y</value>
+  </data>
+	<data name="EnterIpaMenuItem" xml:space="preserve">
+		<value>Enter IPA characters</value>
+	</data>
+</root>

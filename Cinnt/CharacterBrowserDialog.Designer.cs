@@ -29,6 +29,7 @@ namespace Cinnt
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterBrowserDialog));
             this.okBtn = new System.Windows.Forms.Button();
             this.charView = new System.Windows.Forms.ListView();
             this.charTb = new System.Windows.Forms.TextBox();
@@ -42,7 +43,7 @@ namespace Cinnt
             this.okBtn.Name = "okBtn";
             this.okBtn.Size = new System.Drawing.Size(75, 38);
             this.okBtn.TabIndex = 0;
-            this.okBtn.Text = Language.Default.Ok;
+            this.okBtn.Text = global::Cinnt.Properties.Language.Ok;
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
@@ -74,7 +75,7 @@ namespace Cinnt
             this.fontBtn.Name = "fontBtn";
             this.fontBtn.Size = new System.Drawing.Size(103, 38);
             this.fontBtn.TabIndex = 4;
-            this.fontBtn.Text = Language.Default.CharBrowseChangeFont;
+            this.fontBtn.Text = global::Cinnt.Properties.Language.CharBrowseChangeFont;
             this.fontBtn.UseVisualStyleBackColor = true;
             this.fontBtn.Click += new System.EventHandler(this.fontBtn_Click);
             // 
@@ -380,8 +381,9 @@ namespace Cinnt
             this.Controls.Add(this.charView);
             this.Controls.Add(this.okBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CharacterBrowserDialog";
-            this.Text = Language.Default.Title;
+            this.Text = "Cinnt";
             this.ResumeLayout(false);
             this.PerformLayout();
 

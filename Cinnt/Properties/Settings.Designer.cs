@@ -190,5 +190,17 @@ namespace Cinnt.Properties {
                 this["Alphabet"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en-US")]
+        public global::System.Globalization.CultureInfo Culture {
+            get {
+                return ((global::System.Globalization.CultureInfo)(this["Culture"]));
+            }
+            set {
+                this["Culture"] = value;
+            }
+        }
     }
 }

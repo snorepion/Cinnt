@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,10 +18,13 @@ namespace Cinnt
     {
         public MainForm()
         {
+            Language.Culture = Settings.Default.Culture;
             InitializeComponent();
         }
         #region Miscellaneous/basic things
+        bool saved = false;
         string OriginalContent = ""; // used for undo
+        string CurrentFilename = "";
         char[] separator = new char[] { ' ', '\r', '\n' };
         private string GetOneArgument()
         {
@@ -33,47 +38,81 @@ namespace Cinnt
         }
         private void WordCountUpdate(object sender, EventArgs e)
         {
-            charCntLbl.Text = "Characters: " + mainTb.Text.Replace("\r", "").Length;
-            wrdCntLbl.Text = "Words: " + mainTb.Text.Split(new char[] { ' ', '\r' }).TakeWhile(x => !x.Equals("")).ToArray().Length;
-            parCntLbl.Text = "Paragraphs: " + mainTb.Text.Split('\r').Length;
+            charCntLbl.Text = "Characters: " + mainTb.SelectedText.Replace("\r", "").Length;
+            wrdCntLbl.Text = "Words: " + mainTb.SelectedText.Split(new char[] { ' ', '\r' }).TakeWhile(x => !x.Equals("")).ToArray().Length;
+            parCntLbl.Text = "Paragraphs: " + mainTb.SelectedText.Split('\r').Length;
+            saved = false;
         }
         private void MainForm_KeyDown(object sender, KeyEventArgs e) // implements all keyboard shortcuts
         {
             if (e.Control)
             {
-                switch (e.KeyCode)
+                if (e.Shift)
                 {
-                    // in order of their appearance in the menu
-                    case Keys.F:
-                        Find(null, null);
-                        break;
-                    case Keys.H:
-                        Replace(null, null);
-                        break;
-                    case Keys.I:
-                        Isolate(null, null);
-                        break;
-                    case Keys.T:
-                        Subtract(null, null);
-                        break;
-                    case Keys.R:
-                        Insert(null, null);
-                        break;
-                    case Keys.P:
-                        UnicodeInsert(null, null);
-                        break;
-                    case Keys.O:
-                        Covfefe(null, null);
-                        break;
-                    case Keys.S:
-                        Sort(null, null);
-                        break;
-                    case Keys.L:
-                        Shuffle(null, null);
-                        break;
-                    case Keys.Q:
-                        Revert(null, null);
-                        break;
+                    switch (e.KeyCode)
+                    {
+                        // in order of their appearance in the menu
+                        case Keys.I:
+                            Isolate(null, null);
+                            break;
+                        case Keys.T:
+                            Subtract(null, null);
+                            break;
+                        case Keys.R:
+                            Insert(null, null);
+                            break;
+                        case Keys.P:
+                            UnicodeInsert(null, null);
+                            break;
+                        case Keys.O:
+                            Covfefe(null, null);
+                            break;
+                        case Keys.S:
+                            Sort(null, null);
+                            break;
+                        case Keys.L:
+                            Shuffle(null, null);
+                            break;
+                        case Keys.Q:
+                            Revert(null, null);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (e.KeyCode)
+                    {
+                        case Keys.F:
+                            Find(null, null);
+                            break;
+                        case Keys.H:
+                            Replace(null, null);
+                            break;
+                        case Keys.N:
+                            newBtn_Click(null, null);
+                            break;
+                        case Keys.O:
+                            openBtn_Click(null, null);
+                            break;
+                        case Keys.S:
+                            saveBtn_Click(null, null);
+                            break;
+                        case Keys.I:
+                            italicBtn_Click(null, null);
+                            break;
+                        case Keys.B:
+                            boldBtn_Click(null, null);
+                            break;
+                        case Keys.U:
+                            ulBtn_Click(null, null);
+                            break;
+                        case Keys.OemPeriod:
+                            subBtn_Click(null, null);
+                            break;
+                        case Keys.Oemcomma:
+                            supBtn_Click(null, null);
+                            break;
+                    }
                 }
             }
         }
@@ -101,8 +140,13 @@ namespace Cinnt
             mainTb.Font = Settings.Default.def_fnt;
             ToolStripProfessionalRenderer rend = new ToolStripProfessionalRenderer(new Override()) { RoundedEdges = true };
             statStrip.Renderer = rend;
+            statStrip.ForeColor = Settings.Default.btnFC;
             mainMenu.Renderer = rend;
             mainMenu.ForeColor = Settings.Default.btnFC;
+            mainMenu.BackColor = Settings.Default.btnBC;
+            formattingToolStrip.Renderer = rend;
+            formattingToolStrip.ForeColor = Settings.Default.btnFC;
+            formattingToolStrip.BackColor = Settings.Default.btnBC;
         }
         private void ClipboardSet(string s)
         {
@@ -117,7 +161,11 @@ namespace Cinnt
         }
         private void Revert(object sender, EventArgs e)
         {
-            mainTb.Text = OriginalContent;
+            mainTb.SelectedText = OriginalContent;
+        }
+        private void enterIPAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new IpaEntryDialog().Show();
         }
         private void About(object sender, EventArgs e)
         {
@@ -131,8 +179,8 @@ namespace Cinnt
         #region Edit functions
         private void Isolate(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
-            string[] isolation = mainTb.Text.Split(separator).Where(s => s.StartsWith(GetOneArgument())).ToArray();
+            OriginalContent = mainTb.SelectedText;
+            string[] isolation = mainTb.SelectedText.Split(separator).Where(s => s.StartsWith(GetOneArgument())).ToArray();
             if (isolation.Length == 0)
             {
                 tsMsgReporterLbl.Text = "Error 001: Couldn't find an instance of the string you chose.";
@@ -141,19 +189,19 @@ namespace Cinnt
             {
                 tsMsgReporterLbl.Text = "Note: more than one string to isolate was found. This does not affect isolation.";
             }
-            mainTb.Text = String.Concat(isolation);
+            mainTb.SelectedText = String.Concat(isolation);
         }
         private void Subtract(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
-            mainTb.Text = mainTb.Text.Replace(GetOneArgument(), "");
+            OriginalContent = mainTb.SelectedText;
+            mainTb.SelectedText = mainTb.SelectedText.Replace(GetOneArgument(), "");
         }
         private void Insert(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
+            OriginalContent = mainTb.SelectedText;
             char[] cc = new char[] { ' ', ',', '/', '|' };
             string[] args = GetMultipleArguments();
-            string str = mainTb.Text;
+            string str = mainTb.SelectedText;
             if (int.TryParse(args[0], out int i))
             {
                 try
@@ -169,16 +217,16 @@ namespace Cinnt
             {
                 tsMsgReporterLbl.Text = "ERROR 101: One or more of the positions to insert at is not a verifiable integer.";
             }
-            mainTb.Text = str;
+            mainTb.SelectedText = str;
         }
         private void RemoveLetters(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
+            OriginalContent = mainTb.SelectedText;
             string[] args = GetMultipleArguments();
             StringBuilder sb = new StringBuilder();
             if (int.TryParse(args[0], out int i) && int.TryParse(args[1], out int ɪ))
             {
-                foreach (string s in mainTb.Text.Split('\n'))
+                foreach (string s in mainTb.SelectedText.Split('\n'))
                 {
                     if (i < s.Length - 1 && i + ɪ < s.Length - 1)
                     {
@@ -191,26 +239,26 @@ namespace Cinnt
                         sb.Append(s + "\r\n");
                     }
                 }
-                mainTb.Text = sb.ToString();
+                mainTb.SelectedText = sb.ToString();
             }
         }
         private void CaseCtrl(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
+            OriginalContent = mainTb.SelectedText;
             // implements human-readable arguments for this conversion
             switch (argsTb.Text)
             {
                 case "caps":
-                    mainTb.Text = CaseControl(mainTb.Text, 0);
+                    mainTb.SelectedText = CaseControl(mainTb.SelectedText, 0);
                     break;
                 case "lower":
-                    mainTb.Text = CaseControl(mainTb.Text, 1);
+                    mainTb.SelectedText = CaseControl(mainTb.SelectedText, 1);
                     break;
                 case "sentence":
-                    mainTb.Text = CaseControl(mainTb.Text, 2);
+                    mainTb.SelectedText = CaseControl(mainTb.SelectedText, 2);
                     break;
                 case "-sentence":
-                    mainTb.Text = CaseControl(mainTb.Text, 3);
+                    mainTb.SelectedText = CaseControl(mainTb.SelectedText, 3);
                     break;
                 default:
                     break;
@@ -259,7 +307,7 @@ namespace Cinnt
             }
             if (index == 5) // i do not remember what this is and don't have support for it atm
             {
-                string[] alternate = mainTb.Text.Split(new char[] { ' ', '\r', '\n' });
+                string[] alternate = mainTb.SelectedText.Split(new char[] { ' ', '\r', '\n' });
                 int i = 0;
                 foreach (string s in alternate)
                 {
@@ -280,15 +328,15 @@ namespace Cinnt
         }
         private void PadLeft(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
-            string[] s = mainTb.Text.Split('\n');
+            OriginalContent = mainTb.SelectedText;
+            string[] s = mainTb.SelectedText.Split('\n');
             int i = 0;
             foreach (string o in s)
             {
                 s[i] = " " + s[i];
                 i++;
             }
-            mainTb.Text = String.Join("\n", s);
+            mainTb.SelectedText = String.Join("\n", s);
         }
         private void UnicodeInsert(object sender, EventArgs e)
         {
@@ -298,7 +346,7 @@ namespace Cinnt
                 {
                     if (cbd.ShowDialog()==DialogResult.OK)
                     {
-                        mainTb.Text = mainTb.Text.Insert(mainTb.SelectionStart, cbd.SpecialCharacters);
+                        mainTb.SelectedText = mainTb.SelectedText.Insert(mainTb.SelectionStart, cbd.SpecialCharacters);
                     }
                 }
             }
@@ -318,7 +366,7 @@ namespace Cinnt
                         tsMsgReporterLbl.Text = "Error U1: Not a Unicode character";
                     }
                 }
-                mainTb.Text = mainTb.Text.Insert(mainTb.SelectionStart, addChars.ToString());
+                mainTb.SelectedText = mainTb.SelectedText.Insert(mainTb.SelectionStart, addChars.ToString());
             }
         }
         #endregion
@@ -326,7 +374,7 @@ namespace Cinnt
         private void Find(object sender, EventArgs e)
         {
             Regex r = new Regex(argsTb.Text);
-            MatchCollection mc = r.Matches(mainTb.Text);
+            MatchCollection mc = r.Matches(mainTb.SelectedText);
             int origPos = mainTb.SelectionStart;
             int origLgt = mainTb.SelectionLength;
             foreach (Match m in mc)
@@ -340,15 +388,15 @@ namespace Cinnt
         }
         private void Replace(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
+            OriginalContent = mainTb.SelectedText;
             string[] args = GetMultipleArguments();
-            Regex.Replace(mainTb.Text, args[0], args[1]);
+            Regex.Replace(mainTb.SelectedText, args[0], args[1]);
         }
         #endregion
         #region Format
         private void Format(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
+            OriginalContent = mainTb.SelectedText;
             FormatType[] Formats = new FormatType[] { FormatType.ASCII, FormatType.ASCII };
             int i = 0;
             foreach (string s in argsTb.Text.Split(' ')) // gets our format types from human text
@@ -368,7 +416,7 @@ namespace Cinnt
                 }
                 i++;
             }
-            mainTb.Text = ReformatString(mainTb.Text, Formats, tsMsgReporterLbl);
+            mainTb.SelectedText = ReformatString(mainTb.SelectedText, Formats, tsMsgReporterLbl);
         }
         enum FormatType
         {
@@ -464,37 +512,31 @@ namespace Cinnt
             }
             return lb;
         }
-        #endregion
         private void Hash(object sender, EventArgs e)
         {
-            switch (GetOneArgument())
-            {
-                case "sha256":
-                    ClipboardSet(Encoding.UTF8.GetString(new SHA256CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text))));
-                    break;
-                case "sha512":
-                    ClipboardSet(Encoding.UTF8.GetString(new SHA512CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text))));
-                    break;
-                case "md5":
-                    ClipboardSet(Encoding.UTF8.GetString(new MD5CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text))));
-                    break;
-            }
+            if (GetOneArgument() == Language.ArgSha256Hash)
+                ClipboardSet(Encoding.UTF8.GetString(new SHA256CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.SelectedText))));
+            else if (GetOneArgument() == Language.ArgSha512Hash)
+                ClipboardSet(Encoding.UTF8.GetString(new SHA512CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.SelectedText))));
+            else if (GetOneArgument() == Language.ArgMd5Hash)
+                ClipboardSet(Encoding.UTF8.GetString(new MD5CryptoServiceProvider().ComputeHash(Encoding.Unicode.GetBytes(mainTb.SelectedText))));
         }
         private string HashSha256()
         {
             SHA256CryptoServiceProvider sha = new SHA256CryptoServiceProvider();
-            return Encoding.ASCII.GetString(sha.ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text)));
+            return Encoding.ASCII.GetString(sha.ComputeHash(Encoding.Unicode.GetBytes(mainTb.SelectedText)));
         }
         private string HashSha512()
         {
             SHA512CryptoServiceProvider sha = new SHA512CryptoServiceProvider();
-            return Encoding.ASCII.GetString(sha.ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text)));
+            return Encoding.ASCII.GetString(sha.ComputeHash(Encoding.Unicode.GetBytes(mainTb.SelectedText)));
         }
         private string HashMd5()
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            return Encoding.ASCII.GetString(md5.ComputeHash(Encoding.Unicode.GetBytes(mainTb.Text)));
+            return Encoding.ASCII.GetString(md5.ComputeHash(Encoding.Unicode.GetBytes(mainTb.SelectedText)));
         }
+        #endregion
         #region Random
         // only returns an actual string for covfefe=false
         private string GenerateString(int letters, bool covfefe, string[] array)
@@ -506,44 +548,51 @@ namespace Cinnt
             {
                 if (covfefe == true)
                 {
-                    string consonants = "bcdfghjklmnpqrstvwxyz";
-                    string vowels = "aeiou";
-                    char c;
-                    char v;
-                    for (int i = 0; i < 1; i++)
+                    if (Language.CanCovfefeize == "Y")
                     {
-                        c = consonants[r.Next(0, 21)];
-                        sb.Append(c);
-                        v = vowels[r.Next(0, 5)];
-                        sb.Append(v);
-                        sb.Append(c);
-                        sb.Append(v);
-                    }
-                    string empty = String.Empty;
-                    StringBuilder s = new StringBuilder();
-                    int it = 0;
-                    foreach (char ch in str)
-                    {
-                        s.Append(ch);
-                        it += 1;
-                        if (it == str.Length - 5)
+                        string consonants = Language.CovfefeizeConsonants;
+                        string vowels = Language.CovfefeizeVowels;
+                        char c;
+                        char v;
+                        for (int i = 0; i < 1; i++)
                         {
-                            s.Append(sb.ToString());
-                            break;
+                            c = consonants[r.Next(0, consonants.Length - 1)];
+                            sb.Append(c);
+                            v = vowels[r.Next(0, vowels.Length - 1)];
+                            sb.Append(v);
+                            sb.Append(c);
+                            sb.Append(v);
                         }
+                        string empty = String.Empty;
+                        StringBuilder s = new StringBuilder();
+                        int it = 0;
+                        foreach (char ch in str)
+                        {
+                            s.Append(ch);
+                            it += 1;
+                            if (it == str.Length - 5)
+                            {
+                                s.Append(sb.ToString());
+                                break;
+                            }
+                        }
+                        if (string.Equals(str, "coverage", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            s.Remove(0, s.Length);
+                            s.Append("covfefe");
+                        }
+                        number += 1;
+                        mainTb.SelectedText += Environment.NewLine;
+                        mainTb.SelectedText += number.ToString() + ". ";
+                        mainTb.SelectedText += s.ToString();
+                        sb.Clear();
+                        s.Clear();
+                        return "";
                     }
-                    if (string.Equals(str, "coverage", StringComparison.CurrentCultureIgnoreCase))
+                    else
                     {
-                        s.Remove(0, s.Length);
-                        s.Append("covfefe");
+                        MessageBox.Show(Language.CanCovfefeize);
                     }
-                    number += 1;
-                    mainTb.Text += Environment.NewLine;
-                    mainTb.Text += number.ToString() + ". ";
-                    mainTb.Text += s.ToString();
-                    sb.Remove(0, sb.Length);
-                    s.Remove(0, s.Length);
-                    return "";
                 }
                 else
                 {
@@ -560,17 +609,17 @@ namespace Cinnt
         }
         private void Covfefe(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
-            GenerateString(2, true, mainTb.Text.Split(separator));
+            OriginalContent = mainTb.SelectedText; 
+            GenerateString(2, true, mainTb.SelectedText.Split(separator));
         }
         private void Add(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
+            OriginalContent = mainTb.SelectedText;
             if (int.TryParse(GetOneArgument(), out int i))
             {
                 if (i <= Settings.Default.MaximumRand)
                 {
-                    mainTb.Text += GenerateString(i, false, mainTb.Text.Split('\n'));
+                    mainTb.SelectedText += GenerateString(i, false, mainTb.SelectedText.Split('\n'));
                 }
                 else
                 {
@@ -586,34 +635,169 @@ namespace Cinnt
         #region Sortation
         private void Reverse(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
-            mainTb.Text = String.Concat(mainTb.Text.Reverse());
+            OriginalContent = mainTb.SelectedText;
+            mainTb.SelectedText = String.Concat(mainTb.SelectedText.Reverse());
         }
         private void Sort(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
+            OriginalContent = mainTb.SelectedText;
             char c = '\n';
             if (argsTb.Text != "") c = argsTb.Text[0];
-            List<string> ls = mainTb.Text.Split(c).ToList();
+            List<string> ls = mainTb.SelectedText.Split(c).ToList();
             ls.Sort();
-            mainTb.Text = String.Join("\r\n", ls);
+            mainTb.SelectedText = String.Join("\r\n", ls);
         }
         private void Shuffle(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
+            OriginalContent = mainTb.SelectedText;
             char c = '\n';
             if (argsTb.Text != "") c = argsTb.Text[0];
             else { Randomize(null, null); return; }
-            List<string> list = mainTb.Text.Split(c).ToList();
+            List<string> list = mainTb.SelectedText.Split(c).ToList();
             list.Shuffle();
-            mainTb.Text = String.Join(argsTb.Text[0].ToString(), list);
+            mainTb.SelectedText = String.Join(argsTb.Text[0].ToString(), list);
         }
         private void Randomize(object sender, EventArgs e)
         {
-            OriginalContent = mainTb.Text;
-            var lc = new List<char>(mainTb.Text.ToCharArray());
+            OriginalContent = mainTb.SelectedText;
+            var lc = new List<char>(mainTb.SelectedText.ToCharArray());
             lc.Shuffle();
-            mainTb.Text = String.Concat(lc);
+            mainTb.SelectedText = String.Concat(lc);
+        }
+        #endregion
+        #region IO
+        private void newBtn_Click(object sender, EventArgs e)
+        {
+            if (!saved)
+            {
+                if (MessageBox.Show("Your data has not been saved. Continue?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    mainTb.Text = "";
+                    this.Text = global::Cinnt.Properties.Language.Title + "*";
+                }
+            }
+            else mainTb.Text = "";
+        }
+        private void openBtn_Click(object sender, EventArgs e)
+        {
+            if (!saved)
+            {
+                if (MessageBox.Show("Your data has not been saved. Continue?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    OpenFile();
+                }
+            }
+            else OpenFile();
+        }
+        private void OpenFile()
+        {
+            OpenFileDialog ofd = new OpenFileDialog() {
+                Filter = "Text files|*.txt|Rich text files|*.rtf|All files|*.*",
+                Multiselect = false
+            };
+            if (ofd.ShowDialog()==DialogResult.OK)
+            {
+                switch (Path.GetExtension(ofd.FileName)) // switch because I initially had some other file types available
+                {
+                    case ".rtf":
+                        mainTb.LoadFile(ofd.FileName);
+                        break;
+                    default:
+                        mainTb.Text = File.ReadAllText(ofd.FileName);
+                        break;
+                }
+                CurrentFilename = ofd.FileName;
+                saved = true;
+            }
+        }
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (CurrentFilename != "")
+            {
+                switch (Path.GetExtension(CurrentFilename))
+                {
+                    case ".rtf":
+                        mainTb.SaveFile(CurrentFilename);
+                        break;
+                    default:
+                        File.WriteAllText(CurrentFilename, mainTb.Text);
+                        break;
+                }
+                saved = true;
+            }
+            else SaveFile();
+        }
+        private void saveAsBtn_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
+        private void SaveFile()
+        {
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                Filter = "Text files|*.txt|Rich text files|*.rtf|All files|*.*"
+            };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                switch (Path.GetExtension(sfd.FileName))
+                {
+                    case ".rtf":
+                        mainTb.SaveFile(sfd.FileName);
+                        break;
+                    default:
+                        File.WriteAllText(sfd.FileName, mainTb.Text);
+                        break;
+                }
+                CurrentFilename = sfd.FileName;
+                saved = true;
+            }
+        }
+        #endregion
+        #region Text style
+        private void italicBtn_Click(object sender, EventArgs e)
+        {
+            if (!mainTb.SelectionFont.Italic) mainTb.SelectionFont = new Font(mainTb.SelectionFont, FontStyle.Italic | mainTb.SelectionFont.Style);
+            else mainTb.SelectionFont = new Font(mainTb.SelectionFont, mainTb.SelectionFont.Style & ~FontStyle.Italic);
+        }
+        private void boldBtn_Click(object sender, EventArgs e)
+        {
+            if (!mainTb.SelectionFont.Bold) mainTb.SelectionFont = new Font(mainTb.SelectionFont, FontStyle.Bold | mainTb.SelectionFont.Style);
+            else mainTb.SelectionFont = new Font(mainTb.SelectionFont, mainTb.SelectionFont.Style & ~FontStyle.Bold);
+        }
+        private void ulBtn_Click(object sender, EventArgs e)
+        {
+            if (!mainTb.SelectionFont.Underline) mainTb.SelectionFont = new Font(mainTb.SelectionFont, FontStyle.Underline | mainTb.SelectionFont.Style);
+            else mainTb.SelectionFont = new Font(mainTb.SelectionFont, mainTb.SelectionFont.Style & ~FontStyle.Underline);
+        }
+        private void colorBtn_Click(object sender, EventArgs e)
+        {
+            ColorDialog c = new ColorDialog()
+            {
+                Color = mainTb.SelectionColor,
+                FullOpen = true
+            };
+            if (c.ShowDialog() == DialogResult.OK) {
+                mainTb.SelectionColor = c.Color;
+            }
+        }
+        private void supBtn_Click(object sender, EventArgs e)
+        {
+            if (mainTb.SelectionCharOffset != 5) { mainTb.SelectionCharOffset = 5; mainTb.SelectionFont = new Font(mainTb.SelectionFont.FontFamily, mainTb.SelectionFont.Size / 2); }
+            else { mainTb.SelectionCharOffset = 0; mainTb.SelectionFont = new Font(mainTb.SelectionFont.FontFamily, mainTb.SelectionFont.Size * 2); }
+        }
+        private void subBtn_Click(object sender, EventArgs e)
+        {
+            if (mainTb.SelectionCharOffset != -5) { mainTb.SelectionCharOffset = -5; mainTb.SelectionFont = new Font(mainTb.SelectionFont.FontFamily, mainTb.SelectionFont.Size / 2); }
+            else { mainTb.SelectionCharOffset = 0; mainTb.SelectionFont = new Font(mainTb.SelectionFont.FontFamily, mainTb.SelectionFont.Size * 2); }
+        }
+        private void leftBtn_Click(object sender, EventArgs e) => mainTb.SelectionAlignment = HorizontalAlignment.Left;
+        private void centerBtn_Click(object sender, EventArgs e) => mainTb.SelectionAlignment = HorizontalAlignment.Center;
+        private void rightBtn_Click(object sender, EventArgs e) => mainTb.SelectionAlignment = HorizontalAlignment.Right;
+        private void clearFrmtBtn_Click(object sender, EventArgs e)
+        {
+            mainTb.SelectionFont = mainTb.Font;
+            mainTb.SelectionColor = Settings.Default.tbFC;
+            mainTb.SelectionAlignment = HorizontalAlignment.Left;
         }
         #endregion
     }
@@ -670,4 +854,12 @@ public class Override : ProfessionalColorTable
     public override Color ImageMarginGradientBegin { get { return Settings.Default.btnBC; } }
     public override Color ImageMarginGradientMiddle { get { return Settings.Default.btnBC; } }
     public override Color ImageMarginGradientEnd { get { return Settings.Default.btnBC; } }
+    public override Color ToolStripBorder { get { return Settings.Default.statBC; } }
+    public override Color ToolStripContentPanelGradientBegin { get { return Settings.Default.statBC; } }
+    public override Color ToolStripContentPanelGradientEnd { get { return Settings.Default.statBC; } }
+    public override Color ToolStripGradientBegin { get { return Settings.Default.statBC; } }
+    public override Color ToolStripGradientMiddle { get { return Settings.Default.statBC; } }
+    public override Color ToolStripGradientEnd { get { return Settings.Default.statBC; } }
+    public override Color ToolStripPanelGradientBegin { get { return Settings.Default.statBC; } }
+    public override Color ToolStripPanelGradientEnd { get { return Settings.Default.statBC; } }
 }
