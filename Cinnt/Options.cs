@@ -96,6 +96,20 @@ namespace Cinnt
                 }
             }
         }
+        private void Options_Load(object sender, EventArgs e)
+        {
+            // These values are deleted if they are in InitializeComponent(), so they will be implemented on form load.
+            this.localizSelBtn.FlatAppearance.MouseDownBackColor = Settings.Default.btnMdBC;
+            this.localizSelBtn.FlatAppearance.MouseOverBackColor = Settings.Default.btnMoBC;
+            this.modBtn.FlatAppearance.MouseDownBackColor = Settings.Default.btnMdBC;
+            this.modBtn.FlatAppearance.MouseOverBackColor = Settings.Default.btnMoBC;
+            this.applyBtn.FlatAppearance.MouseDownBackColor = Settings.Default.btnMdBC;
+            this.applyBtn.FlatAppearance.MouseOverBackColor = Settings.Default.btnMoBC;
+            this.uiFntBtn.FlatAppearance.MouseDownBackColor = Settings.Default.btnMdBC;
+            this.uiFntBtn.FlatAppearance.MouseOverBackColor = Settings.Default.btnMoBC;
+            this.resetBtn.FlatAppearance.MouseDownBackColor = Settings.Default.btnMdBC;
+            this.resetBtn.FlatAppearance.MouseOverBackColor = Settings.Default.btnMoBC;
+        }
     }
     static class WritingSystems
     {

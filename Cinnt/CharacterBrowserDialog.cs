@@ -57,5 +57,10 @@ namespace Cinnt
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+        private void CharacterBrowserDialog_Load(object sender, EventArgs e)
+        {
+            okBtn.FlatAppearance.MouseDownBackColor = Properties.Settings.Default.btnMdBC;
+            okBtn.FlatAppearance.MouseOverBackColor = Properties.Settings.Default.btnMoBC;
+        }
     }
 }

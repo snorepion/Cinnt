@@ -106,5 +106,10 @@ namespace Cinnt
             MessageBox.Show("To apply your changes, restart the program.");
             this.Close();
         }
+        private void LocalizationSelector_Load(object sender, EventArgs e)
+        {
+            okBtn.FlatAppearance.MouseDownBackColor = Properties.Settings.Default.btnMdBC;
+            okBtn.FlatAppearance.MouseOverBackColor = Properties.Settings.Default.btnMoBC;
+        }
     }
 }

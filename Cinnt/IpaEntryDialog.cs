@@ -279,5 +279,11 @@ namespace Cinnt
             Dictionary<String, String> newvals = inputValues.Zip(outputValues, (one, two) => new { one, two }).ToDictionary(x => x.one, x => x.two);
             entryTb.Text = newvals.Aggregate(entryTb.Text, (cur, x) => cur.Replace(x.Key, x.Value));
         }
+
+        private void IpaEntryDialog_Load(object sender, EventArgs e)
+        {
+            okBtn.FlatAppearance.MouseDownBackColor = Properties.Settings.Default.btnMdBC;
+            okBtn.FlatAppearance.MouseOverBackColor = Properties.Settings.Default.btnMoBC;
+        }
     }
 }

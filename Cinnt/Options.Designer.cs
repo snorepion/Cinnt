@@ -68,6 +68,7 @@ namespace Cinnt
             // 
             // genTp
             // 
+            this.genTp.BackColor = global::Cinnt.Properties.Settings.Default.uiBC;
             this.genTp.Controls.Add(this.localizSelBtn);
             this.genTp.Controls.Add(this.label4);
             this.genTp.Controls.Add(this.alphabetCb);
@@ -85,30 +86,37 @@ namespace Cinnt
             this.genTp.Size = new System.Drawing.Size(469, 220);
             this.genTp.TabIndex = 0;
             this.genTp.Text = global::Cinnt.Properties.Language.SettingsGeneralTab;
-            this.genTp.UseVisualStyleBackColor = true;
             // 
             // localizSelBtn
             // 
-            this.localizSelBtn.Location = new System.Drawing.Point(315, 4);
+            this.localizSelBtn.BackColor = global::Cinnt.Properties.Settings.Default.btnBC;
+            this.localizSelBtn.FlatAppearance.BorderSize = 0;
+            this.localizSelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.localizSelBtn.ForeColor = global::Cinnt.Properties.Settings.Default.btnFC;
+            this.localizSelBtn.Location = new System.Drawing.Point(362, 28);
             this.localizSelBtn.Name = "localizSelBtn";
-            this.localizSelBtn.Size = new System.Drawing.Size(143, 28);
+            this.localizSelBtn.Size = new System.Drawing.Size(101, 28);
             this.localizSelBtn.TabIndex = 10;
             this.localizSelBtn.Text = global::Cinnt.Properties.Language.SettingsLocalizationSelect;
-            this.localizSelBtn.UseVisualStyleBackColor = true;
+            this.localizSelBtn.UseVisualStyleBackColor = false;
             this.localizSelBtn.Click += new System.EventHandler(this.localizSelBtn_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(170, 8);
+            this.label4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label4.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
+            this.label4.Location = new System.Drawing.Point(285, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 20);
+            this.label4.Size = new System.Drawing.Size(181, 20);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Localization:";
+            this.label4.Text = "Localization: English (U.S.)";
             // 
             // alphabetCb
             // 
-            this.alphabetCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.alphabetCb.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
+            this.alphabetCb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.alphabetCb.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
             this.alphabetCb.FormattingEnabled = true;
             this.alphabetCb.Items.AddRange(new object[] {
             "26-letter Latin",
@@ -140,6 +148,9 @@ namespace Cinnt
             // 
             // alphTb
             // 
+            this.alphTb.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
+            this.alphTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.alphTb.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
             this.alphTb.Location = new System.Drawing.Point(84, 128);
             this.alphTb.Multiline = true;
             this.alphTb.Name = "alphTb";
@@ -158,14 +169,17 @@ namespace Cinnt
             // 
             // maxLetterNud
             // 
-            this.maxLetterNud.Location = new System.Drawing.Point(148, 95);
+            this.maxLetterNud.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
+            this.maxLetterNud.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.maxLetterNud.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
+            this.maxLetterNud.Location = new System.Drawing.Point(148, 98);
             this.maxLetterNud.Maximum = new decimal(new int[] {
             5242880,
             0,
             0,
             0});
             this.maxLetterNud.Name = "maxLetterNud";
-            this.maxLetterNud.Size = new System.Drawing.Size(122, 27);
+            this.maxLetterNud.Size = new System.Drawing.Size(122, 23);
             this.maxLetterNud.TabIndex = 5;
             this.maxLetterNud.Value = new decimal(new int[] {
             5242880,
@@ -233,21 +247,28 @@ namespace Cinnt
             // 
             // persTp
             // 
+            this.persTp.BackColor = global::Cinnt.Properties.Settings.Default.uiBC;
             this.persTp.Controls.Add(this.applyBtn);
             this.persTp.Controls.Add(this.resetBtn);
             this.persTp.Controls.Add(this.uiFntBtn);
             this.persTp.Controls.Add(this.modBtn);
             this.persTp.Controls.Add(this.colorSelectLb);
+            this.persTp.Font = global::Cinnt.Properties.Settings.Default.uiFont;
             this.persTp.Location = new System.Drawing.Point(4, 29);
             this.persTp.Name = "persTp";
             this.persTp.Padding = new System.Windows.Forms.Padding(3);
             this.persTp.Size = new System.Drawing.Size(469, 220);
             this.persTp.TabIndex = 1;
             this.persTp.Text = global::Cinnt.Properties.Language.SettingsPersonalTab;
-            this.persTp.UseVisualStyleBackColor = true;
             // 
             // applyBtn
             // 
+            this.applyBtn.BackColor = global::Cinnt.Properties.Settings.Default.btnBC;
+            this.applyBtn.FlatAppearance.BorderSize = 0;
+            this.applyBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.applyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.applyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyBtn.ForeColor = global::Cinnt.Properties.Settings.Default.btnFC;
             this.applyBtn.Location = new System.Drawing.Point(391, 168);
             this.applyBtn.Name = "applyBtn";
             this.applyBtn.Size = new System.Drawing.Size(72, 43);
@@ -258,36 +279,57 @@ namespace Cinnt
             // 
             // resetBtn
             // 
+            this.resetBtn.BackColor = global::Cinnt.Properties.Settings.Default.btnBC;
+            this.resetBtn.FlatAppearance.BorderSize = 0;
+            this.resetBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.resetBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resetBtn.ForeColor = global::Cinnt.Properties.Settings.Default.btnFC;
             this.resetBtn.Location = new System.Drawing.Point(391, 121);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(72, 41);
             this.resetBtn.TabIndex = 3;
             this.resetBtn.Text = global::Cinnt.Properties.Language.SettingsReset;
-            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.UseVisualStyleBackColor = false;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // uiFntBtn
             // 
+            this.uiFntBtn.BackColor = global::Cinnt.Properties.Settings.Default.btnBC;
+            this.uiFntBtn.FlatAppearance.BorderSize = 0;
+            this.uiFntBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.uiFntBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.uiFntBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.uiFntBtn.ForeColor = global::Cinnt.Properties.Settings.Default.btnFC;
             this.uiFntBtn.Location = new System.Drawing.Point(391, 62);
             this.uiFntBtn.Name = "uiFntBtn";
             this.uiFntBtn.Size = new System.Drawing.Size(72, 53);
             this.uiFntBtn.TabIndex = 2;
             this.uiFntBtn.Text = global::Cinnt.Properties.Language.SettingsChangeUIFont;
-            this.uiFntBtn.UseVisualStyleBackColor = true;
+            this.uiFntBtn.UseVisualStyleBackColor = false;
             this.uiFntBtn.Click += new System.EventHandler(this.uiFntBtn_Click);
             // 
             // modBtn
             // 
+            this.modBtn.BackColor = global::Cinnt.Properties.Settings.Default.btnBC;
+            this.modBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.modBtn.FlatAppearance.BorderSize = 0;
+            this.modBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.modBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.modBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modBtn.Location = new System.Drawing.Point(391, 7);
             this.modBtn.Name = "modBtn";
             this.modBtn.Size = new System.Drawing.Size(72, 49);
             this.modBtn.TabIndex = 1;
             this.modBtn.Text = global::Cinnt.Properties.Language.SettingsModify;
-            this.modBtn.UseVisualStyleBackColor = true;
+            this.modBtn.UseVisualStyleBackColor = false;
             this.modBtn.Click += new System.EventHandler(this.modBtn_Click);
             // 
             // colorSelectLb
             // 
+            this.colorSelectLb.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
+            this.colorSelectLb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.colorSelectLb.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
             this.colorSelectLb.FormattingEnabled = true;
             this.colorSelectLb.ItemHeight = 20;
             this.colorSelectLb.Items.AddRange(new object[] {
@@ -300,9 +342,11 @@ namespace Cinnt
             "Window background",
             "Find and replace match color",
             "Status strip background"});
-            this.colorSelectLb.Location = new System.Drawing.Point(4, 7);
+            this.colorSelectLb.Location = new System.Drawing.Point(4, 9);
+            this.colorSelectLb.MaximumSize = new System.Drawing.Size(400, 220);
+            this.colorSelectLb.MinimumSize = new System.Drawing.Size(381, 210);
             this.colorSelectLb.Name = "colorSelectLb";
-            this.colorSelectLb.Size = new System.Drawing.Size(381, 204);
+            this.colorSelectLb.Size = new System.Drawing.Size(381, 200);
             this.colorSelectLb.TabIndex = 0;
             // 
             // Options
@@ -317,6 +361,7 @@ namespace Cinnt
             this.Name = "Options";
             this.Text = "Cinnt Options";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Options_FormClosing);
+            this.Load += new System.EventHandler(this.Options_Load);
             this.tabControl1.ResumeLayout(false);
             this.genTp.ResumeLayout(false);
             this.genTp.PerformLayout();

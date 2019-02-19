@@ -147,6 +147,10 @@ namespace Cinnt
             formattingToolStrip.Renderer = rend;
             formattingToolStrip.ForeColor = Settings.Default.btnFC;
             formattingToolStrip.BackColor = Settings.Default.btnBC;
+            foreach (ToolStripItem i in formattingToolStrip.Items)
+            {
+                i.ImageTransparentColor = Settings.Default.statBC;
+            }
         }
         private void ClipboardSet(string s)
         {
@@ -346,7 +350,7 @@ namespace Cinnt
                 {
                     if (cbd.ShowDialog()==DialogResult.OK)
                     {
-                        mainTb.SelectedText = mainTb.SelectedText.Insert(mainTb.SelectionStart, cbd.SpecialCharacters);
+                        if (cbd.SpecialCharacters.Length > 0) mainTb.SelectedText = mainTb.SelectedText.Insert(mainTb.SelectionStart, cbd.SpecialCharacters);
                     }
                 }
             }
@@ -854,7 +858,7 @@ public class Override : ProfessionalColorTable
     public override Color ImageMarginGradientBegin { get { return Settings.Default.btnBC; } }
     public override Color ImageMarginGradientMiddle { get { return Settings.Default.btnBC; } }
     public override Color ImageMarginGradientEnd { get { return Settings.Default.btnBC; } }
-    public override Color ToolStripBorder { get { return Settings.Default.statBC; } }
+    public override Color ToolStripBorder { get { return Settings.Default.btnBC; } }
     public override Color ToolStripContentPanelGradientBegin { get { return Settings.Default.statBC; } }
     public override Color ToolStripContentPanelGradientEnd { get { return Settings.Default.statBC; } }
     public override Color ToolStripGradientBegin { get { return Settings.Default.statBC; } }
@@ -862,4 +866,5 @@ public class Override : ProfessionalColorTable
     public override Color ToolStripGradientEnd { get { return Settings.Default.statBC; } }
     public override Color ToolStripPanelGradientBegin { get { return Settings.Default.statBC; } }
     public override Color ToolStripPanelGradientEnd { get { return Settings.Default.statBC; } }
+    public override Color ToolStripDropDownBackground { get { return Settings.Default.btnBC; } }
 }

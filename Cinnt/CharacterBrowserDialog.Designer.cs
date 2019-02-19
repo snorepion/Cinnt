@@ -35,27 +35,42 @@ namespace Cinnt
             this.charTb = new System.Windows.Forms.TextBox();
             this.fontBtn = new System.Windows.Forms.Button();
             this.blockSelection = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // okBtn
             // 
-            this.okBtn.Location = new System.Drawing.Point(361, 418);
+            this.okBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okBtn.BackColor = global::Cinnt.Properties.Settings.Default.btnBC;
+            this.okBtn.FlatAppearance.BorderSize = 0;
+            this.okBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.okBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.okBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.okBtn.ForeColor = global::Cinnt.Properties.Settings.Default.btnFC;
+            this.okBtn.Location = new System.Drawing.Point(364, 418);
             this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 38);
+            this.okBtn.Size = new System.Drawing.Size(72, 38);
             this.okBtn.TabIndex = 0;
             this.okBtn.Text = global::Cinnt.Properties.Language.Ok;
-            this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.UseVisualStyleBackColor = false;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // charView
             // 
+            this.charView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.charView.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
+            this.charView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.charView.Font = new System.Drawing.Font("Segoe UI Emoji", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.charView.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
             this.charView.GridLines = true;
             this.charView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.charView.Location = new System.Drawing.Point(12, 35);
+            this.charView.Location = new System.Drawing.Point(12, 41);
             this.charView.Name = "charView";
             this.charView.ShowItemToolTips = true;
-            this.charView.Size = new System.Drawing.Size(424, 377);
+            this.charView.Size = new System.Drawing.Size(424, 371);
             this.charView.TabIndex = 2;
             this.charView.TileSize = new System.Drawing.Size(32, 32);
             this.charView.UseCompatibleStateImageBehavior = false;
@@ -64,24 +79,40 @@ namespace Cinnt
             // 
             // charTb
             // 
-            this.charTb.Location = new System.Drawing.Point(16, 426);
+            this.charTb.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
+            this.charTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.charTb.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
+            this.charTb.Location = new System.Drawing.Point(6, 11);
             this.charTb.Name = "charTb";
-            this.charTb.Size = new System.Drawing.Size(230, 22);
+            this.charTb.Size = new System.Drawing.Size(220, 20);
             this.charTb.TabIndex = 3;
             // 
             // fontBtn
             // 
-            this.fontBtn.Location = new System.Drawing.Point(252, 418);
+            this.fontBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.fontBtn.BackColor = global::Cinnt.Properties.Settings.Default.btnBC;
+            this.fontBtn.FlatAppearance.BorderSize = 0;
+            this.fontBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.fontBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.fontBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fontBtn.ForeColor = global::Cinnt.Properties.Settings.Default.btnFC;
+            this.fontBtn.Location = new System.Drawing.Point(255, 418);
             this.fontBtn.Name = "fontBtn";
             this.fontBtn.Size = new System.Drawing.Size(103, 38);
             this.fontBtn.TabIndex = 4;
             this.fontBtn.Text = global::Cinnt.Properties.Language.CharBrowseChangeFont;
-            this.fontBtn.UseVisualStyleBackColor = true;
+            this.fontBtn.UseVisualStyleBackColor = false;
             this.fontBtn.Click += new System.EventHandler(this.fontBtn_Click);
             // 
             // blockSelection
             // 
+            this.blockSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.blockSelection.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
+            this.blockSelection.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.blockSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.blockSelection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.blockSelection.ForeColor = global::Cinnt.Properties.Settings.Default.tbFC;
             this.blockSelection.FormattingEnabled = true;
             this.blockSelection.Items.AddRange(new object[] {
             "Basic Latin (0000–007F)",
@@ -364,28 +395,43 @@ namespace Cinnt
             "Variation Selectors Supplement (E0100–E01EF)",
             "Supplementary Private Use Area-A (F0000–FFFFF)",
             "Supplementary Private Use Area-B (100000–10FFFF)"});
-            this.blockSelection.Location = new System.Drawing.Point(12, 5);
+            this.blockSelection.Location = new System.Drawing.Point(12, 7);
             this.blockSelection.Name = "blockSelection";
-            this.blockSelection.Size = new System.Drawing.Size(424, 24);
+            this.blockSelection.Size = new System.Drawing.Size(424, 28);
             this.blockSelection.TabIndex = 7;
             this.blockSelection.SelectedIndexChanged += new System.EventHandler(this.blockSelection_SelectedIndexChanged);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = global::Cinnt.Properties.Settings.Default.tbBC;
+            this.panel1.Controls.Add(this.charTb);
+            this.panel1.Location = new System.Drawing.Point(16, 418);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(233, 38);
+            this.panel1.TabIndex = 8;
+            // 
             // CharacterBrowserDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = global::Cinnt.Properties.Settings.Default.uiBC;
             this.ClientSize = new System.Drawing.Size(446, 468);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.blockSelection);
             this.Controls.Add(this.fontBtn);
-            this.Controls.Add(this.charTb);
             this.Controls.Add(this.charView);
             this.Controls.Add(this.okBtn);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Font = global::Cinnt.Properties.Settings.Default.uiFont;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CharacterBrowserDialog";
             this.Text = "Cinnt";
+            this.Load += new System.EventHandler(this.CharacterBrowserDialog_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -396,5 +442,6 @@ namespace Cinnt
         private System.Windows.Forms.TextBox charTb;
         private System.Windows.Forms.Button fontBtn;
         private System.Windows.Forms.ComboBox blockSelection;
+        private System.Windows.Forms.Panel panel1;
     }
 }
